@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/pagina_principal.css">
     <title>DOA Home</title>
     <script src="../js/popup.js" defer></script>
 </head>
@@ -11,15 +12,15 @@
     <header>
         <div>
             <!--Imagenes de LOGO , notificacion y perfil-->
-            <a href="#"> <img src="../imagenes/logo_DOA.svg" alt="Logo de DOA"> </a>
+            <a href="#"> <img src="../imagenes/logo_DOA.svg" alt="Logo de DOA" id="logo_DOA"> </a>
 
             <!--Popups de notificaciones y perfil-->
-            <button class="btn opener-dialog">  <img src="../imagenes/icono_notificacion.svg" alt="icono_notificaciones">  </button>
+            <button class="btn-icono opener-dialog">  <img src="../imagenes/icono_notificacion.svg" alt="icono_notificaciones" id="icono_notificaciones">  </button>
                 <dialog class="popup">
                     <!--Aqui va el contenido de las notificaciones-->
 
                 </dialog>
-            <button class="btn opener-dialog" >  <img src="../imagenes/icono_perfil.svg" alt="icono_perfil">  </button>
+            <button class="btn-icono opener-dialog" >  <img src="../imagenes/icono_perfil.svg" alt="icono_perfil" id="icono_perfil">  </button>
                 <dialog class="popup">
                     <!--Aqui va el contenido del perfil-->
 
@@ -34,10 +35,10 @@
 
     <!--Menu de hamburguesa-->
     <aside>
-        <button class="btn opener-dialog">  <img src="../imagenes/icono_hamburguesa.svg" alt="logo-hamburguesa">  </button>
+        <button class="btn opener-dialog">  <img src="../imagenes/icono_hamburguesa.svg" alt="logo-hamburguesa" id="icono-hamburguesa">  </button>
 
         <!--Contenidos hamburguesa-->
-        <dialog class="popup" >
+        <dialog class="popup" id="popup_hamburguesa" open>
             <!--Despegable de mis asignaturas-->
             <details>
                 <summary>Mis asignaturas</summary>

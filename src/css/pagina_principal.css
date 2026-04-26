@@ -1,0 +1,61 @@
+header{
+    position: absolute;
+    background-color: #8D0085;
+    left: 0%;
+    top: 0%;
+    height: 125px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    
+
+    .btn-icono{
+        background-color: transparent;
+        border: none;
+
+    }
+
+    #logo_DOA{
+        height: 57px;
+        width: 201px;
+    }
+
+    #icono_notificaciones{
+        position: relative;
+        height: 60px;
+        width: 61px;
+        left: 165vh;
+
+    }
+
+    #icono_perfil{
+        position: relative;
+        height: 70px;
+        width: 71px;
+        left: 167vh;
+    }
+
+    h4{
+        position: absolute;
+        top: 30%;
+        left: 9%;
+    }
+
+}
+
+aside{
+    position: absolute;
+    bottom: 82vh;
+    
+    #icono-hamburguesa{
+        border: none;
+        background-color: transparent;
+    }
+
+    #popup_hamburguesa{
+
+    }
+
+}
+
