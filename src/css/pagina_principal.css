@@ -6,13 +6,14 @@ header{
     height: 125px;
     width: 100%;
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     
 
     .btn-icono{
         background-color: transparent;
         border: none;
+
 
     }
 
@@ -22,42 +23,45 @@ header{
     }
 
     #icono_notificaciones{
-        position: relative;
         height: 60px;
         width: 61px;
-        left: 160vh;
-
     }
 
     #icono_perfil{
-        position: relative;
         height: 70px;
         width: 71px;
-        left: 162vh;
     }
 
     h4{
-        position: absolute;
-        top: 30%;
-        left: 9%;
+        position: fixed;
     }
 
 }
 
+
+
 aside{
-    position: absolute;
-    bottom: 81vh;
-    
+    position: fixed;  
+    top: 125px;        
+    left: 0;
+    height: calc(100vh - 125px);
+
+
     #icono-hamburguesa{
+        position: absolute;
         border: none;
         background-color: transparent;
+        margin-bottom: 20px;
+        z-index: 1001;   
     }
 
     #popup_hamburguesa{
         position: absolute;
-        height: 78vh;
         width: 400px;
-        top: 0%;
+        top: 0;
+        height: 100%;
+        padding-top: 100px;
+        z-index: 1000;
     }
 
 }
