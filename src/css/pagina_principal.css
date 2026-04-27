@@ -25,7 +25,7 @@ header{
         position: relative;
         height: 60px;
         width: 61px;
-        left: 165vh;
+        left: 160vh;
 
     }
 
@@ -33,7 +33,7 @@ header{
         position: relative;
         height: 70px;
         width: 71px;
-        left: 167vh;
+        left: 162vh;
     }
 
     h4{
@@ -46,7 +46,7 @@ header{
 
 aside{
     position: absolute;
-    bottom: 82vh;
+    bottom: 81vh;
     
     #icono-hamburguesa{
         border: none;
@@ -54,7 +54,10 @@ aside{
     }
 
     #popup_hamburguesa{
-
+        position: absolute;
+        height: 78vh;
+        width: 400px;
+        top: 0%;
     }
 
 }
