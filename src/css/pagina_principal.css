@@ -45,16 +45,19 @@ header{
 
 
 aside{
-    position: fixed;  
+    position: absolute;  
     top: 125px;        
     left: 0;
     height: calc(100vh - 125px);
+
 
     #icono-hamburguesa{
         position: absolute;
         border: none;
         background-color: transparent;
-        z-index: 1001;   
+        z-index: 1001;
+        top:20px;
+        left: 10px;
     }
 
     #popup_hamburguesa{
