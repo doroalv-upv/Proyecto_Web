@@ -6,7 +6,7 @@ header{
     height: 125px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
     
 
@@ -23,6 +23,9 @@ header{
     }
 
     #icono_notificaciones{
+        position: absolute;
+        right: 100px;
+        bottom: 30%;
         height: 60px;
         width: 61px;
     }
@@ -34,6 +37,7 @@ header{
 
     h4{
         position: fixed;
+        left: 185px;
     }
 
 }
@@ -46,12 +50,10 @@ aside{
     left: 0;
     height: calc(100vh - 125px);
 
-
     #icono-hamburguesa{
         position: absolute;
         border: none;
         background-color: transparent;
-        margin-bottom: 20px;
         z-index: 1001;   
     }
 
