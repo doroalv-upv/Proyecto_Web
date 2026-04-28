@@ -45,10 +45,10 @@ header{
 
 
 aside{
-    position: absolute;  
+    position: fixed;  
     top: 125px;        
     left: 0;
-    height: calc(100vh - 125px);
+    height: 100%;
 
 
     #icono-hamburguesa{
@@ -71,3 +71,11 @@ aside{
 
 }
 
+#popup_notificaciones{
+        position: fixed;
+        width: 400px;
+        top: 125px;
+        left: 1475px;
+        height: 100%;
+
+}
