@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+/*Contenido principal.*/
+
+.Landing_page_GTI {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    /* Espacio entre el texto y la tarjeta en PC */
+    padding: 40px 5%;
+    /* Fondo con una capa ligeramente oscura para que el texto blanco resalte */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/tu-fondo-portatil.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/*Contenido que está en Pc a la izda y en móvil arriba*/
+
+.Texto_GTI {
+    max-width: 450px;
+    color: white;
+}
+
+.Texto_GTI h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+
+/*Enlaces de navegación de los CTA*/
+
+.CTAs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
