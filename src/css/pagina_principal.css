@@ -139,3 +139,44 @@ aside{
     }
 }
 
+@media (max-width: 414px)
+{
+
+header{
+
+    h4{
+        display: none;
+    }
+}
+
+
+aside
+{
+    top: 125px;
+    margin-left: 30px;   
+    margin-top: 99px;     
+    height: 100%;
+
+    #icono-hamburguesa{
+        position: fixed;
+        border: none;
+        background-color: transparent;
+        top: 100px;
+    }
+
+    #popup_hamburguesa{
+        position: absolute;
+        width: 301px;
+        top: 0;
+        height: 100%;
+        padding-top: 20px;
+        z-index: 1000;
+        border: 2px solid #8D0085;
+    }
+
+}
+
+
+
+
+}
