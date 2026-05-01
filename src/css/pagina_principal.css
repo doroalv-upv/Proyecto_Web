@@ -40,9 +40,16 @@ header{
         left: 185px;
     }
 
+    .popup{
+        position: fixed;
+        width: 400px;
+        top: 125px;
+        height: 100%;
+
+    }
+
+
 }
-
-
 
 aside{
     position: fixed;  
@@ -69,13 +76,34 @@ aside{
         z-index: 1000;
     }
 
+    div{
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 100px;
+
+
+        summary{
+            list-style: none;
+            border: 2px solid black;
+            user-select: none;
+        }
+
+
+        details > button{
+            display: flex;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 60px;
+        }
+
+    }
+
+
+
+
+
 }
 
-#popup_notificaciones{
-        position: fixed;
-        width: 400px;
-        top: 125px;
-        left: 1475px;
-        height: 100%;
-
-}
