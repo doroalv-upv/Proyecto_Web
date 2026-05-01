@@ -40,11 +40,21 @@ header{
         left: 185px;
     }
 
-    .popup{
+    #popup_perfil{
         position: fixed;
-        width: 400px;
+        width: 508px;
+        top: 125px;
+        height: 117px;
+        left: auto;
+
+    }
+
+    #popup_notificaciones{
+        position: fixed;
+        width: 495px;
         top: 125px;
         height: 100%;
+        left: auto;
 
     }
 
@@ -69,11 +79,12 @@ aside{
 
     #popup_hamburguesa{
         position: absolute;
-        width: 400px;
+        width: 351px;
         top: 0;
         height: 100%;
         padding-top: 100px;
         z-index: 1000;
+        border: 2px solid #8D0085;
     }
 
     div{
@@ -82,13 +93,32 @@ aside{
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        margin-top: 100px;
+        margin-top: 30px;
 
 
         summary{
             list-style: none;
-            border: 2px solid black;
+            border: 2px solid #8D0085;
             user-select: none;
+            border-radius: 10px;
+            text-align: center;
+            height: 53px;
+            width: 223px;
+            background-color: #8D0085;
+
+            
+        }
+
+        #boton-anuncios{
+            border: 2px solid #8D0085;
+            user-select: none;
+            border-radius: 10px;
+            text-align: center;
+            height: 53px;
+            width: 223px;
+            background-color: #8D0085;
+            flex-shrink: 0;
+            margin-top: 30px;
         }
 
 
@@ -97,13 +127,15 @@ aside{
             margin-top: 20px;
             margin-bottom: 20px;
             margin-left: 60px;
+            border: 2px solid #0455AD;
+            background-color: transparent;
+            border-radius: 10px;
+            width: 150px;
+            height: 49px;
         }
 
+        
+
     }
-
-
-
-
-
 }
 
