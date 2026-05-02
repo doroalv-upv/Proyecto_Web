@@ -105,8 +105,10 @@ aside{
             height: 53px;
             width: 223px;
             background-color: #8D0085;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            
         }
 
         #boton-anuncios{
@@ -122,7 +124,7 @@ aside{
         }
 
 
-        details > button{
+        details > a > button{
             display: flex;
             margin-top: 20px;
             margin-bottom: 20px;
@@ -132,9 +134,13 @@ aside{
             border-radius: 10px;
             width: 150px;
             height: 49px;
+            align-items: center;
+            justify-content: center;
         }
 
-        
+        a{
+            text-decoration: none;
+        }
 
     }
 }
@@ -143,9 +149,30 @@ aside{
 {
 
 header{
+    position: fixed;
+    height: 51px;
+    width: 337px;
 
     h4{
         display: none;
+    }
+
+    #icono_notificaciones{
+        position: absolute;
+        right: 100px;
+        bottom: 30%;
+        height: 30px;
+        width: 28px;
+    }
+
+    #icono_perfil{
+        height: 39px;
+        width: 35px;
+    }
+
+    #logo_DOA{
+        height: 57px;
+        width: 201px;
     }
 }
 
@@ -161,7 +188,11 @@ aside
         position: fixed;
         border: none;
         background-color: transparent;
-        top: 100px;
+        width: 32px;
+        height: 25px;
+        bottom: 100px;
+        filter: brightness(0) invert(1);
+
     }
 
     #popup_hamburguesa{
