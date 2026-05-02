@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap');
+
 dialog:not([open]) {
     display: none;
 }
@@ -45,6 +47,9 @@ header{
     h4{
         position: fixed;
         left: 185px;
+        font-family: 'Mulish', sans-serif;
+        color: #FFFFFF;
+        font-size: 19px;
     }
 
     #popup_perfil{
@@ -115,6 +120,9 @@ aside{
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'Mulish', sans-serif;
+            color: #FFFFFF;
+            font-size: 24px;
 
         }
 
@@ -128,6 +136,9 @@ aside{
             background-color: #8D0085;
             flex-shrink: 0;
             margin-top: 30px;
+            font-family: 'Mulish', sans-serif;
+            color: #FFFFFF;
+            font-size: 24px;
         }
 
 
@@ -143,10 +154,14 @@ aside{
             height: 49px;
             align-items: center;
             justify-content: center;
+            font-family: 'Mulish', sans-serif;
+            color: #000000;
+            font-size: 19px;
         }
 
         a{
             text-decoration: none;
+            
         }
 
         details > dialog{
@@ -164,7 +179,7 @@ aside{
             align-content: flex-start;
 
 
-            button{
+            a > button{
                 display: flex;
                 margin-top: 20px;
                 margin-bottom: 20px;
@@ -176,7 +191,26 @@ aside{
                 height: 49px;
                 align-items: center;
                 justify-content: center;
+                font-family: 'Mulish', sans-serif;
+                color: #000000;
+                font-size: 19px;
 
+
+            }
+
+            .boton-cerrar{
+                border:solid #0455AD;
+                background-color: #0455AD;
+                border-radius: 10px;
+                width: 230px;
+                height: 56px;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Mulish', sans-serif;
+                color: #FFFFFF;
+                font-size: 19px;
+                position: relative;
+                top: 330px;
 
             }
             
@@ -198,6 +232,10 @@ header{
     position: fixed;
     height: 51px;
     width: 337px;
+    align-items: center;
+    border-radius: 20px;
+    left: 27px;
+    top: 10px;
 
     h4{
         display: none;
@@ -206,7 +244,7 @@ header{
     #icono_notificaciones{
         position: absolute;
         right: 100px;
-        bottom: 30%;
+        bottom: 23%;
         height: 30px;
         width: 28px;
     }
@@ -217,9 +255,16 @@ header{
     }
 
     #logo_DOA{
-        height: 57px;
-        width: 201px;
+        height: 24px;
+        width: 84px;
     }
+
+    #popup_notificaciones{
+        width: 334px;
+        right: 10px;
+    }
+
+
 }
 
 
@@ -238,8 +283,9 @@ aside
         background-color: transparent;
         width: 32px;
         height: 25px;
-        bottom: 100px;
         filter: brightness(0) invert(1);
+        top: 23px;
+        left: 277px;
 
     }
 
@@ -251,6 +297,65 @@ aside
         padding-top: 20px;
         z-index: 1000;
         border: 2px solid #8D0085;
+    }
+
+    div{
+        
+        summary{
+            width: 170px;
+            height: 53px;
+            font-size: 19px;
+        }
+
+        details > button{
+            margin-left: 15px;
+            width: 157px;
+            height: 41px;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        #boton-anuncios{
+            width: 170px;
+            height: 53px;
+            font-size: 19px;
+        }
+
+
+        details > dialog{
+            position: fixed;
+            width: 340px;
+            height: 500px;
+            top: 160px;
+            left: 0%;
+            gap: 20px;
+            
+
+            a > button{
+                margin-left: 0px;
+                width: 157px;
+                height: 41px;
+                top: 100px;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+
+            }
+
+            .boton-cerrar{
+                top: 240px;
+                left: 170px;
+                width: 168px;
+                height: 50px;
+                font-size: 18px;
+
+            }
+
+
+        }
+
+
     }
 
 

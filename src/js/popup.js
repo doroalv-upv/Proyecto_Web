@@ -2,6 +2,7 @@
 const button = document.querySelectorAll(".opener-dialog");
 const popup = document.querySelectorAll(".popup");
 const popupCerrar = document.querySelectorAll(".popup-cerrar");
+const botonCerrarPopup = document.querySelectorAll(".boton-cerrar");
 
 
 for(let i=0;i<= button.length -1;i++)
@@ -33,3 +34,18 @@ for(let i=0;i<= button.length -1;i++)
     })
 }
 
+//Esta parte es para cerrar popups que tengan la clase .popup-cerrar via botones que no generan popups
+for(let i=0;i<= botonCerrarPopup.length -1;i++)
+{
+    botonCerrarPopup[i].addEventListener("click", () => {
+
+        for(let k=0; k<=popupCerrar.length -1;k++)
+        {
+            if(popupCerrar[k].open)
+            {
+                popupCerrar[k].close();
+            }
+        }
+
+    })
+}
