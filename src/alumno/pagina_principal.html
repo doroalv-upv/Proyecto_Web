@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/pagina_principal.css">
     <title>DOA Home</title>
     <script src="../js/popup.js" defer></script>
+
 </head>
 <body>
 <!--Encabezado de la página-->
@@ -42,10 +43,24 @@
                 <details>
                     <summary>Mis asignaturas</summary>
 
-                    <a href="#"><button>Programacion</button></a>
-                    <a href="#"><button>Redes</button></a>
-                    <a href="#"><button>Proyecto Web</button></a>
-                    
+                    <!--Aqui va los cursos, y el popup donde aparecen las asignaturas-->
+                    <button class="opener-dialog"> 1º Curso</button>
+                    <dialog class="popup popup-cerrar" >
+                        <!--Asignaturas-->
+                        <a href="#"> <button>  Redes  </button>   </a>
+                        <a href="#"> <button>  Programacion  </button>   </a>
+                        <a href="#"> <button>  Proyecto Web  </button>   </a>
+                        
+
+                    </dialog>
+
+                    <button class="opener-dialog"> 2º Curso</button>
+                    <dialog class="popup popup-cerrar" >
+
+                        <a href="#"> <button>  Programacion  </button>   </a> 
+                        <a href="#"> <button>  Programacion  </button>   </a>
+                        <a href="#"> <button>  Proyecto Web  </button>   </a>
+                    </dialog>
 
                 </details>
                 <!--Boton de anuncios generales-->

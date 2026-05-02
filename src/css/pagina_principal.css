@@ -1,3 +1,10 @@
+
+dialog:not([open]) {
+    display: none;
+}
+
+
+
 header{
     position: absolute;
     background-color: #8D0085;
@@ -124,7 +131,7 @@ aside{
         }
 
 
-        details > a > button{
+        details > button{
             display: flex;
             margin-top: 20px;
             margin-bottom: 20px;
@@ -142,10 +149,49 @@ aside{
             text-decoration: none;
         }
 
+        details > dialog{
+            border: 2px solid #8D0085;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            margin-top: 60px;
+            width: 450px;
+            height: 500px;
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 20px;
+            align-content: flex-start;
+
+
+            button{
+                display: flex;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                margin-left: 45px;
+                border: 2px solid #0455AD;
+                background-color: transparent;
+                border-radius: 10px;
+                width: 150px;
+                height: 49px;
+                align-items: center;
+                justify-content: center;
+
+
+            }
+            
+            a {
+                display: contents;
+            }
+
+        }
+
+
+
     }
 }
 
-@media (max-width: 414px)
+@media (max-width: 460px)
 {
 
 header{
@@ -179,6 +225,8 @@ header{
 
 aside
 {
+
+
     top: 125px;
     margin-left: 30px;   
     margin-top: 99px;     
@@ -205,9 +253,9 @@ aside
         border: 2px solid #8D0085;
     }
 
-}
-
-
-
 
 }
+
+
+}
+
