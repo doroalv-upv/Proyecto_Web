@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+h1{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 100px;
+
+
+}
+
+section{
+
+    margin-top: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+
+    #caja-anuncio{
+        border: 2px solid #0a0a0a;
+        width: 982px;
+        height: 233px;
+
+        #datos_anuncio{
+            border: 0px solid #0a0a0a;
+            background-color: #8D0085;
+            height:64px ;
+            display: flex;
+            flex-direction: column;
+
+            h6{
+                margin: 0 ;
+                font-family: 'Source Sans 3', sans-serif;
+                font-size: 23px;
+                color: #ffffff;
+                
+            }
+
+            h6:nth-child(3){
+                position: absolute;
+                right: 225px;
+                margin-top: 30px;
+  
+            }
+        }
+
+        p{
+            font-family: 'Mulish', sans-serif;
+            font-size: 17px;
+            overflow-y: auto;     
+            max-height: 130px;
+            overflow-y: auto;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+
+        }
+    }
+}
