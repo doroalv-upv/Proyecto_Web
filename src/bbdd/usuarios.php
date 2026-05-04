@@ -2,28 +2,12 @@
 $usuarios = [
     "l.simdre@epsg.upv.es"	=> [
         "nombre" => "l.simdre@epsg.upv.es",
-        "asignaturas" => "Programacion"
+        "asignaturas" => ["Programacion", "Redes"]
     ],
     "m.kirkam@epsg.upv.es"	=> [
         "nombre" => "",
-        "asignaturas" => ""
-    ],
-    "d.rawabc@epsg.upv.es"	=> [
-        "nombre" => "",
-        "asignaturas" => ""
-    ],
-    "k.poumai@upv.es"	 => [
-        "nombre" => "",
-        "asignaturas" => ""
-    ],
-    "l.prista@upv.es"   => [
-        "nombre" => "",
-        "asignaturas" => ""
-    ], 
-    "e.mermiz@upv.es"   => [
-        "nombre" => "",
-        "asignaturas" => ""
-    ],     
+        "asignaturas" => ["Redes"]
+    ],   
 
 ];
 
@@ -31,7 +15,7 @@ $usuarios = [
 function existeUsuarioAsignatura($nombre, $asignatura){
     global $usuarios;
 
-    if(isset($usuarios[$nombre]) && $usuarios[$nombre]["asignaturas"] === $asignatura){
+    if(isset($usuarios[$nombre]) && in_array($asignatura, $usuarios[$nombre]["asignaturas"])){
         return true;
         }
 

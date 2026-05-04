@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba anuncios</title>
+</head>
+<body>
+
+  <h1>Sección anuncios</h1>
+
+  <!-- BOTÓN: UNA ASIGNATURA -->
+  <form action="alumno/seccion_anuncios.php" method="post">
+    <input type="hidden" name="nombreEnviar" value="l.simdre@epsg.upv.es">
+    <input type="hidden" name="asignaturaEnviar" value="Programacion">
+    <button type="submit">Ver anuncios de Programación</button>
+  </form>
+
+
+  <br><br>
+
+  <!-- BOTÓN: TODAS LAS ASIGNATURAS -->
+  <form action="alumno/seccion_anuncios.php" method="post">
+    <input type="hidden" name="nombreEnviar" value="l.simdre@epsg.upv.es">
+    <input type="hidden" name="todos" value="1">
+    <button type="submit">Ver todos los anuncios</button>
+  </form>
+
+</body>
+</html>
