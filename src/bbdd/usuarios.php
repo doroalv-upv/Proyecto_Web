@@ -1,7 +1,7 @@
 <?php
 $usuarios = [
     "l.simdre@epsg.upv.es"	=> [
-        "nombre" => "",
+        "nombre" => "l.simdre@epsg.upv.es",
         "asignaturas" => "Programacion"
     ],
     "m.kirkam@epsg.upv.es"	=> [
@@ -27,13 +27,16 @@ $usuarios = [
 
 ];
 
+
 function existeUsuarioAsignatura($nombre, $asignatura){
     global $usuarios;
-    if (isset($usuarios["$nombre"]) && isset($usuarios["$nombre"]["$asignatura"])){
+
+    if(isset($usuarios[$nombre]) && $usuarios[$nombre]["asignaturas"] === $asignatura){
         return true;
-    }
+        }
 
     return false;
 }
+
 
 ?>

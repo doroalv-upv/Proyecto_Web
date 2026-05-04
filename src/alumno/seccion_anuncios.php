@@ -14,17 +14,26 @@
     <?php
     include "../bbdd/anuncios_bbdd.php";
     include "../bbdd/usuarios.php";
+    //$nombre = $_POST["nombreEnviar"];
+    //$asignatura = $_POST["asignaturaEnviar"];
+    $nombre = "l.simdre@epsg.upv.es" ;
+    $asignatura = "Programacion" ;
 
 
-    if(isset($anuncio_asignaturas[$_POST["asignatura"]])){
-    // Confirmar si el usuario tiene la asignatura matriculada
-    if(existeUsuarioAsignatura($_POST("$nombre"),$_POST("$asignatura")) == true){
+    if(isset($anuncio_asignaturas[$asignatura])){
+    // Confirmar si el usuario tiene la asignatura matriculada 
+            if(empty($anuncio_asignaturas[$asignatura])){
+
+            echo "<h4>No hay anuncios</h4>";
+            }
+            else{
+            if(existeUsuarioAsignatura($nombre,$asignatura) == true){
 
     ?>
     <section>
         <!--Caja del anuncio-->
         <?php
-            foreach($asignaturas["Programacion"] as $id => $datos_anuncios){
+            foreach($anuncio_asignaturas[$asignatura] as $id => $datos_anuncios){
 
         ?>
         <div id="caja-anuncio">
@@ -44,17 +53,11 @@
         ?>
     </section>
     <?php
-    }
-       }
-    ?>
-    <?php
-       else{
-            if(!isset($anuncio_asignaturas["$asignatura"]["$id"])){
-    ?>
-                <h4></h4> 
-    <?php
-            }
-       }
-    ?>
+        }}
+
+ 
+        }
+    
+            ?>
 </body>
 </html>
