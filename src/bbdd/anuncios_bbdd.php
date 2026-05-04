@@ -1,6 +1,6 @@
 <?php
 
-    $asignaturas = [
+    $anuncio_asignaturas = [
         "Programacion" => [
             "id12fe3" => [ // identificador aleatorio de un anuncio
                 "Asignatura" => "Programacion",

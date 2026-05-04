@@ -13,9 +13,12 @@
 
     <?php
     include "../bbdd/anuncios_bbdd.php";
+    include "../bbdd/usuarios.php";
 
-      #  if(isset($_POST["asignatura"])){
 
+    if(isset($anuncio_asignaturas[$_POST["asignatura"]])){
+    // Confirmar si el usuario tiene la asignatura matriculada
+    if(existeUsuarioAsignatura($_POST("$nombre"),$_POST("$asignatura")) == true){
 
     ?>
     <section>
@@ -37,10 +40,21 @@
         </div>
         <?php
             }
+            
         ?>
     </section>
     <?php
-       # }
+    }
+       }
+    ?>
+    <?php
+       else{
+            if(!isset($anuncio_asignaturas["$asignatura"]["$id"])){
+    ?>
+                <h4></h4> 
+    <?php
+            }
+       }
     ?>
 </body>
 </html>
