@@ -483,8 +483,9 @@ body {
     }
 }
 
-
-    /* Contenedor principal de la vista de anuncios */
+/*----------------------------------------------*/
+/* Contenedor principal de la vista de anuncios */
+/*----------------------------------------------*/
 #vista-anuncios{
     
     /* Importación de las tipografías utilizadas en títulos y contenido */

@@ -14,10 +14,10 @@
     <?php
     include "../bbdd/anuncios_bbdd.php";
     include "../bbdd/usuarios.php";
-    //$nombre = $_POST["nombreEnviar"];
-    //$asignatura = $_POST["asignaturaEnviar"] ?? null;
-    $nombre = "l.simdre@epsg.upv.es";
-    $asignatura = "Programacion";
+    $nombre = $_POST["nombreEnviar"];
+    $asignatura = $_POST["asignaturaEnviar"] ?? null;
+    //$nombre = "l.simdre@epsg.upv.es";
+    //$asignatura = "Programacion";
 
 
         if (isset($_POST["todos"]) || isset($anuncio_asignaturas[$asignatura])) {    // Confirmar si el usuario tiene la asignatura matriculada 
