@@ -1,11 +1,6 @@
 /* ==========================================================================
-   ESTILOS GENERALES (Comunes a toda la plataforma DOA)
-   Estos estilos se aplican a todas las páginas para mantener la coherencia.
+   PARTE 1: ESTILOS GENERALES (Comunes a toda la plataforma DOA)
    ========================================================================== */
-
-
-/* --- VARIABLES --- 
-   Limpia los márgenes por defecto de los navegadores y define los colores corporativos. */
 
 * {
     margin: 0;
@@ -16,36 +11,25 @@
 
 body {
     background-color: #EBEBEB;
-    /* Fondo gris claro general de la plataforma */
     color: #333;
-    /* Color de texto oscuro para buena legibilidad */
 }
 
 :root {
     --doa-purple: #8A0078;
-    /* Morado principal de DOA */
     --doa-blue: #0052A3;
-    /* Azul secundario para botones de acción */
 }
-
-
-/* --- UTILIDADES --- 
-   Manejar elementos */
 
 .solo-movil,
 .boton-volver-solo-movil {
     display: none;
-    /* Por defecto (en PC) estos elementos están ocultos */
 }
 
 .oculto {
     display: none !important;
-    /* Fuerza a ocultar cualquier elemento (usado por JS) */
 }
 
 
-/* ---BARRA SUPERIOR  --- 
-   La franja morada que siempre está arriba con el logo y el perfil. */
+/* --- BARRA SUPERIOR (HEADER) --- */
 
 .barra-arriba {
     background-color: var(--doa-purple);
@@ -56,7 +40,7 @@ body {
     padding: 10px 20px;
     height: 80px;
     position: relative;
-    /* para centrar la hamburguesa en el móvil */
+    z-index: 200;
 }
 
 .area-logo {
@@ -71,11 +55,33 @@ body {
     display: block;
 }
 
+.migas-pan {
+    font-size: 0.95rem;
+}
+
+.migas-pan a,
+.migas-pan a:link,
+.migas-pan a:visited,
+.migas-pan a:active {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.migas-pan a:hover {
+    color: #E0EFFF;
+    text-decoration: none;
+}
+
+.migas-pan span {
+    font-weight: bold;
+}
+
 .elementos-barra-arriba {
     display: flex;
     align-items: center;
     gap: 20px;
-    /* Separación entre campanita y avatar */
 }
 
 .avatar-perfil svg {
@@ -91,14 +97,13 @@ body {
 }
 
 
-/* --- ESTRUCTURA BASE Y MENÚ LATERAL --- 
-   Divide la pantalla en dos: menú a la izquierda y contenido a la derecha. */
+/* --- ESTRUCTURA BASE Y MENÚ LATERAL --- */
 
 .layout-principal {
     display: flex;
     height: calc(100vh - 80px);
-    /*ocupa toda la altura hasta la barra superior */
     overflow: hidden;
+    position: relative;
 }
 
 .sidebar {
@@ -106,14 +111,10 @@ body {
     background-color: #F5F5F5;
     border-right: 2px solid var(--doa-purple);
     padding: 20px;
-    transition: all 0.3s ease;
-    /* Animación suave al abrir/cerrar */
+    transition: transform 0.3s ease, width 0.3s ease;
     display: flex;
     flex-direction: column;
 }
-
-
-/* Estado del menú cuando se cierra en PC */
 
 .sidebar.cerrado {
     width: 75px;
@@ -139,100 +140,166 @@ body {
     display: block;
 }
 
+
+/* --- MENÚ: TÍTULO FIJO --- */
+
 .titula-seccion-menu {
     background-color: var(--doa-purple);
     color: white;
-    padding: 10px;
+    padding: 12px 15px;
     border-radius: 8px;
-    text-align: center;
-    margin-bottom: 15px;
+    text-align: left;
+    margin-bottom: 10px;
     font-weight: bold;
+    user-select: none;
+    border: 2px solid #640056;
 }
+
+
+/* --- MENÚ: ÁRBOL DE JERARQUÍAS --- */
 
 .nav-asignaturas {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 20px;
+    padding-left: 10px;
+    border-left: 2px solid var(--doa-purple);
+    margin-left: 15px;
+    overflow-y: auto;
+    margin-bottom: 40px;
 }
 
 
-/* Botones de las asignaturas en el menú */
+/* NIVEL 1: Cursos (Desplegables) */
+
+.btn-curso-menu {
+    background-color: #EAEAEA;
+    color: #333;
+    border: 2px solid #999;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-weight: 700;
+    text-align: left;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.btn-curso-menu:hover {
+    background-color: #D6D6D6;
+}
+
+.btn-curso-menu::after {
+    content: "▼";
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-curso-menu.activo {
+    border-color: var(--doa-purple);
+}
+
+.btn-curso-menu.activo::after {
+    transform: rotate(180deg);
+}
+
+
+/* NIVEL 2: Asignaturas */
+
+.contenedor-asignaturas-menu {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: 2px dashed #B0B0B0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.contenedor-asignaturas-menu.abierto {
+    display: flex;
+}
 
 .btn-asignatura {
-    background: transparent;
+    background: white;
     border: 1px solid var(--doa-blue);
-    color: #333;
-    padding: 10px;
-    border-radius: 8px;
+    color: #555;
+    padding: 8px 10px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    text-align: left;
+    font-size: 0.9rem;
+    transition: all 0.2s;
 }
 
 .btn-asignatura:hover {
     background-color: #E0EFFF;
-    /* Efecto hover azul clarito */
+    border-color: var(--doa-blue);
+}
+
+.btn-asignatura.activa {
+    background-color: var(--doa-blue);
+    color: white;
+    font-weight: bold;
+    border: 2px solid #003d7a;
 }
 
 .btn-anuncios {
     width: 100%;
     background-color: var(--doa-purple);
     color: white;
-    border: none;
+    border: 2px solid #640056;
     padding: 10px;
     border-radius: 8px;
     margin-top: auto;
-    /* Empuja el botón al fondo del menú */
 }
 
 
-/* Contenedor principal donde va la información que va a ir cambiando */
+/* ==========================================================================
+   PARTE 2: ESTILOS ESPECÍFICOS DE LAS VISTAS
+   ========================================================================== */
+
+
+/* --- VISTA: ASIGNATURAS --- */
 
 .contenido-principal {
     flex-grow: 1;
-    /* Ocupa todo el espacio restante a la derecha */
     padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     overflow-y: auto;
-    /* Permite scroll vertical si hay más contenido del que cabe en pantalla */
 }
-
-
-/* ==========================================================================
-   ESTILOS ESPECÍFICOS 
-   ========================================================================== */
-
-
-/* --- SELECCIÓN DE ASIGNATURAS --- 
-   Estilos para los botones gigantes de Anuncios y Recursos. */
 
 .btn-curso-azul {
     background-color: var(--doa-blue);
     color: white;
-    border: none;
+    border: 2px solid #003d7a;
     padding: 30px 40px;
     border-radius: 8px;
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 40px;
-    width: 300px;
-    text-align: center;
+    width: 100%;
+    max-width: 400px;
 }
 
 .recursos {
     display: flex;
     gap: 20px;
-    flex-direction: row;
+    width: 100%;
 }
 
 .btn-recurso {
-    background: transparent;
-    border: 1px solid var(--doa-blue);
+    background: white;
+    border: 2px solid var(--doa-blue);
     padding: 20px;
     border-radius: 8px;
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -240,15 +307,14 @@ body {
     cursor: pointer;
 }
 
-.btn-recurso img {
+.btn-recurso svg {
     width: 80px;
     height: 80px;
-    display: block;
+    flex-shrink: 0;
 }
 
 
-/* --- LISTA DE RECURSOS --- 
-   Estilos para la página donde salen todos los archivos de recursos. */
+/* --- VISTA: RECURSOS --- */
 
 .titulo-recursos {
     text-align: center;
@@ -257,14 +323,10 @@ body {
     margin-bottom: 30px;
 }
 
-
-/* Buscador y filtro */
-
 .barra-busqueda-filtros {
     display: flex;
     gap: 10px;
     margin: 0 auto 20px auto;
-    /* Centra la barra */
     width: 100%;
     max-width: 800px;
 }
@@ -287,12 +349,10 @@ body {
     width: 100%;
     height: 40px;
     padding-left: 40px;
-    /* Deja espacio para la lupa */
     border: 1px solid #333;
     border-radius: 6px;
     background-color: #EAEAEA;
     outline: none;
-    /* Quita el borde feo por defecto al hacer clic */
 }
 
 .select-filtro-wrapper {
@@ -307,20 +367,21 @@ body {
     background-color: #EAEAEA;
     padding: 0 10px;
     outline: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    cursor: pointer;
+    appearance: none;
 }
 
 .contenedor-recursos {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    /* Centra la lista de archivos */
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-
-
-/* Cajas de cada archivo */
 
 .tarjeta-recurso {
     display: flex;
@@ -365,9 +426,6 @@ body {
     color: #666;
 }
 
-
-/* Mensaje cuando no hay archivos */
-
 .estado-vacio {
     text-align: center;
     width: 100%;
@@ -377,26 +435,23 @@ body {
 
 
 /* ==========================================================================
-   VERSIÓN MÓVIl
-   Todo lo que hay aquí dentro pisa o modifica los estilos anteriores 
-   únicamente si la pantalla mide 768px de ancho o menos.
+   PARTE 3: VERSIÓN MÓVIL (RESPONSIVE)
    ========================================================================== */
 
 @media (max-width: 768px) {
-    /* Utilidades Móvil */
     .solo-movil,
     .boton-volver-solo-movil {
         display: flex;
     }
-    /* Muestra elementos de móvil */
     .migas-pan,
     .menu-lateral-soloPC {
         display: none !important;
     }
-    /* Oculta elementos de PC */
-    /* Header Móvil */
     .barra-arriba {
         height: 60px;
+    }
+    .layout-principal {
+        height: calc(100vh - 60px);
     }
     .logo {
         width: 84px;
@@ -406,7 +461,6 @@ body {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        /* Centrado */
         background: none;
         border: none;
     }
@@ -422,24 +476,23 @@ body {
         width: 22px;
         height: auto;
     }
-    /* Sidebar del móvil */
     .sidebar {
-        position: fixed;
-        bottom: 0;
+        position: absolute;
+        top: 0;
         left: 0;
         width: 100% !important;
         height: auto;
-        max-height: 75vh;
+        max-height: 100%;
         z-index: 100;
-        transform: translateY(120%);
-        /* Oculto abajo por defecto */
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
+        transform: translateY(-100%);
+        border-radius: 0 0 25px 25px;
+        border-right: none;
+        border-bottom: 3px solid var(--doa-purple);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
     .sidebar.abierto {
         transform: translateY(0);
     }
-    /* Lo sube hacia arriba al abrir */
     .contenido-menu {
         padding: 20px;
         width: 100%;
@@ -450,7 +503,6 @@ body {
         border: none;
         overflow-y: auto;
     }
-    /* Vistas Generales Móvil */
     .contenido-principal {
         padding: 20px;
         align-items: center;
@@ -462,22 +514,26 @@ body {
         margin-bottom: 20px;
         color: #333;
     }
-    /* Vista Asignaturas Móvil */
     .btn-curso-azul,
     .recursos,
     .btn-recurso,
     .tarjeta-recurso {
         width: 100%;
     }
-    .recursos,
-    .tarjeta-recurso {
+    .recursos {
         flex-direction: column;
     }
+    .btn-recurso {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 20px;
+    }
+    .btn-recurso svg,
     .btn-recurso img {
         width: 41px;
         height: 38px;
+        flex-shrink: 0;
     }
-    /* Vista Recursos Móvil */
     .tarjeta-recurso {
         flex-direction: column;
         align-items: flex-start;
@@ -486,7 +542,6 @@ body {
     .tarjeta-der {
         align-items: flex-start;
         padding-left: 60px;
-        /* Alinea los datos de la derecha con el texto superior en móvil */
         text-align: left;
     }
 }
