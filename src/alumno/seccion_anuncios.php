@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOA Sección de anuncios</title>
-    <link rel="stylesheet" href="../css/seccion_anuncios.css">
+    <link rel="stylesheet" href="../css/VistaAsignaturas_Y_Recursos_estilos.css">
 </head>
-<body>
+<body id="vista-anuncios">
 
     <h1> Anuncios </h1>
 
@@ -14,10 +14,10 @@
     <?php
     include "../bbdd/anuncios_bbdd.php";
     include "../bbdd/usuarios.php";
-    $nombre = $_POST["nombreEnviar"];
-    $asignatura = $_POST["asignaturaEnviar"] ?? null;
-    //$nombre = "l.simdre@epsg.upv.es";
-    //$asignatura = "Programacion";
+    //$nombre = $_POST["nombreEnviar"];
+    //$asignatura = $_POST["asignaturaEnviar"] ?? null;
+    $nombre = "l.simdre@epsg.upv.es";
+    $asignatura = "Programacion";
 
 
         if (isset($_POST["todos"]) || isset($anuncio_asignaturas[$asignatura])) {    // Confirmar si el usuario tiene la asignatura matriculada 

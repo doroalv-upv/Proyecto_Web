@@ -482,3 +482,116 @@ body {
         text-align: left;
     }
 }
+
+
+    /* Contenedor principal de la vista de anuncios */
+#vista-anuncios{
+    
+    /* Importación de las tipografías utilizadas en títulos y contenido */
+    @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+    /* Título principal de la sección de anuncios */
+    h1{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: 100px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    }
+
+    /* Contenedor general donde se listan todos los anuncios */
+    section{
+
+        margin-top: 130px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+
+        /* Caja de todo el anuncio */
+        #caja-anuncio{
+            border: 2px solid #0a0a0a;
+            width: 982px;
+            height: 233px;
+
+            /* Cabecera del anuncio donde se muestran los datos principales */
+            #datos_anuncio{
+                border: 0px solid #0a0a0a;
+                background-color: #8D0085;
+                height:64px ;
+                display: flex;
+                flex-direction: row;
+
+                /* Texto de los datos del anuncio (título, asignatura, fecha, autor ) */
+                h6{
+                    margin: 0 ;
+                    font-family: 'Source Sans 3', sans-serif;
+                    font-size: 23px;
+                    color: #ffffff;
+                    
+                }
+
+                /* Autor mostrado abajo a la izquierda de la cabezera */
+                h6:nth-child(2){
+                    position: absolute;
+                    margin-left: 0px;
+                    margin-top: 30px;
+    
+                }
+
+                /* Ajustar la fecha a la derecha de la cabezera */
+                h6:nth-child(3){
+                    position: absolute;
+                    margin-left: 860px;
+                    margin-top: 30px;
+    
+                }
+            }
+            /* Texto principal del anuncio */
+            p{
+                font-family: 'Mulish', sans-serif;
+                font-size: 17px;
+                overflow-y: auto;     
+                max-height: 130px;
+                overflow-y: auto;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+
+            }
+        }
+    }
+
+/* Adaptación del diseño para pantallas pequeñas */
+    @media (max-width: 760px){
+
+        section #caja-anuncio{
+            width: 296px;
+            height: 173px;
+
+            #datos_anuncio{
+                height: 72px;
+
+                h6{
+                    font-size: 16px;
+                }
+
+                h6:nth-child(2){
+                    margin-left: 0px;
+                    margin-top: 50px;
+                }
+
+                h6:nth-child(3){
+                    margin-left: 210px;
+                    margin-top: 50px;
+                }
+            }
+            p{
+                max-height: 80px;
+                font-size: 13px;
+            }
+        }
+    }
+}
