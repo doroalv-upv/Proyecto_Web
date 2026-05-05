@@ -1,0 +1,484 @@
+/* ==========================================================================
+   PARTE 1: ESTILOS GENERALES (Comunes a toda la plataforma DOA)
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #EBEBEB;
+    color: #333;
+}
+
+:root {
+    --doa-purple: #8A0078;
+    --doa-blue: #0052A3;
+}
+
+.solo-movil,
+.boton-volver-solo-movil {
+    display: none;
+}
+
+.oculto {
+    display: none !important;
+}
+
+
+/* --- BARRA SUPERIOR (HEADER) --- */
+
+.barra-arriba {
+    background-color: var(--doa-purple);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 80px;
+    position: relative;
+    z-index: 200;
+    /* Asegura que la cabecera siempre esté por encima del menú */
+}
+
+.area-logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 201px;
+    height: 57px;
+    display: block;
+}
+
+
+/* Migas de pan */
+
+.migas-pan {
+    font-size: 0.95rem;
+}
+
+.migas-pan a,
+.migas-pan a:link,
+.migas-pan a:visited,
+.migas-pan a:active {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.migas-pan a:hover {
+    color: #E0EFFF;
+    text-decoration: none;
+}
+
+.migas-pan span {
+    font-weight: bold;
+}
+
+.elementos-barra-arriba {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar-perfil svg {
+    width: 70px;
+    height: 71px;
+    display: block;
+}
+
+.campanita svg {
+    width: 42px;
+    height: auto;
+    display: block;
+}
+
+
+/* --- ESTRUCTURA BASE Y MENÚ LATERAL --- */
+
+.layout-principal {
+    display: flex;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    position: relative;
+    /* Necesario para que el menú móvil nazca de aquí */
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #F5F5F5;
+    border-right: 2px solid var(--doa-purple);
+    padding: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.cerrado {
+    width: 75px;
+    background-color: transparent;
+    border-right: none;
+}
+
+.sidebar.cerrado .contenido-menu {
+    display: none;
+}
+
+.menu-lateral-soloPC {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.menu-lateral-soloPC svg {
+    width: 35px;
+    height: auto;
+    display: block;
+}
+
+.titula-seccion-menu {
+    background-color: var(--doa-purple);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.nav-asignaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-asignatura {
+    background: transparent;
+    border: 1px solid var(--doa-blue);
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-asignatura:hover {
+    background-color: #E0EFFF;
+}
+
+.btn-anuncios {
+    width: 100%;
+    background-color: var(--doa-purple);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+.contenido-principal {
+    flex-grow: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+
+/* ==========================================================================
+   PARTE 2: ESTILOS ESPECÍFICOS
+   ========================================================================== */
+
+
+/* --- VISTA: ASIGNATURAS --- */
+
+.btn-curso-azul {
+    background-color: var(--doa-blue);
+    color: white;
+    border: none;
+    padding: 30px 40px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    width: 300px;
+    text-align: center;
+}
+
+.recursos {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+}
+
+.btn-recurso {
+    background: transparent;
+    border: 1px solid var(--doa-blue);
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.btn-recurso svg,
+.btn-recurso img {
+    width: 80px;
+    height: 80px;
+    display: block;
+    flex-shrink: 0;
+}
+
+
+/* --- VISTA: RECURSOS --- */
+
+.titulo-recursos {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.barra-busqueda-filtros {
+    display: flex;
+    gap: 10px;
+    margin: 0 auto 20px auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+.input-busqueda-wrapper {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icono-lupa {
+    position: absolute;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+}
+
+.input-busqueda {
+    width: 100%;
+    height: 40px;
+    padding-left: 40px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #EAEAEA;
+    outline: none;
+}
+
+.select-filtro-wrapper {
+    width: 120px;
+}
+
+.select-filtro {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #EAEAEA;
+    padding: 0 10px;
+    outline: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    cursor: pointer;
+    appearance: none;
+}
+
+.contenedor-recursos {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tarjeta-recurso {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 15px 25px;
+    background-color: #F5F5F5;
+    width: 100%;
+}
+
+.tarjeta-izq {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.tarjeta-der {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.texto-nombre {
+    font-weight: bold;
+}
+
+.texto-tipo {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.texto-autor {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.texto-fecha {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.estado-vacio {
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+    color: #777;
+}
+
+
+/* ==========================================================================
+   PARTE 3: VERSIÓN MÓVIL (RESPONSIVE)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .solo-movil,
+    .boton-volver-solo-movil {
+        display: flex;
+    }
+    .migas-pan,
+    .menu-lateral-soloPC {
+        display: none !important;
+    }
+    .barra-arriba {
+        height: 60px;
+    }
+    /* El espacio principal descuenta la nueva cabecera más estrecha */
+    .layout-principal {
+        height: calc(100vh - 60px);
+    }
+    .logo {
+        width: 84px;
+        height: 24px;
+    }
+    .menu-hamburguesa-movil {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: none;
+        border: none;
+    }
+    .menu-hamburguesa-movil svg {
+        width: 30px;
+        height: 30px;
+    }
+    .avatar-perfil svg {
+        width: 35px;
+        height: 39px;
+    }
+    .campanita svg {
+        width: 22px;
+        height: auto;
+    }
+    /* NUEVO MENÚ DESPLEGABLE DESDE ARRIBA */
+    .sidebar {
+        position: absolute;
+        /* Se ancla a la parte de arriba del layout-principal */
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: auto;
+        max-height: 100%;
+        /* No se sale de la pantalla */
+        z-index: 100;
+        transform: translateY(-100%);
+        /* Se oculta por completo hacia arriba */
+        /* Redondeamos las esquinas de abajo y le damos sombra */
+        border-radius: 0 0 25px 25px;
+        border-right: none;
+        border-bottom: 3px solid var(--doa-purple);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .sidebar.abierto {
+        transform: translateY(0);
+        /* Se despliega hacia abajo hasta su tamaño normal */
+    }
+    .contenido-menu {
+        padding: 20px;
+        width: 100%;
+        margin: 0;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        border: none;
+        overflow-y: auto;
+    }
+    .contenido-principal {
+        padding: 20px;
+        align-items: center;
+    }
+    .boton-volver-solo-movil {
+        background: none;
+        border: none;
+        align-self: flex-start;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    .btn-curso-azul,
+    .recursos,
+    .btn-recurso,
+    .tarjeta-recurso {
+        width: 100%;
+    }
+    .recursos {
+        flex-direction: column;
+    }
+    .btn-recurso {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 20px;
+    }
+    .btn-recurso svg,
+    .btn-recurso img {
+        width: 41px;
+        height: 38px;
+        flex-shrink: 0;
+    }
+    .tarjeta-recurso {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .tarjeta-der {
+        align-items: flex-start;
+        padding-left: 60px;
+        text-align: left;
+    }
+}
