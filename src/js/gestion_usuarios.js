@@ -14,9 +14,15 @@ const USUARIOS = [
     { id: 10, nombre: "José Luis", apellidos: "Gimenez", dni: "Sin DNI", email: "jogilo@upvnet.upv.es", rol: "profesor" }
 ];
 
+
 const AVATAR_SVG = `
-<img src="img/icono_perfil.svg" style="width:40px;height:40px;border-radius:50%;" alt="Avatar">
+  <img 
+    src="../imagenes/icono_perfil.svg"
+    alt="Avatar"
+    style="width:40px;height:40px;border-radius:50%;"
+  >
 `;
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
