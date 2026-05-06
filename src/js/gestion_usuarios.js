@@ -64,7 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 </span>
             `;
 
-            li.addEventListener("click", () => abrirFichaUsuario(usuario));
+            li.addEventListener("click", function () {
+                localStorage.setItem(
+                    "usuarioSeleccionado",
+                    JSON.stringify(usuario)
+                );
+                window.location.href = "../centro_docente/anyadir_usuarios_secreataria.html";
+            });
+
             listaUsuarios.appendChild(li);
         });
     }

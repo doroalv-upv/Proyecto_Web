@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir nuevo usuario</title>
+    <link rel="stylesheet" href="../css/añadir_usuario_secretaria.css">
+</head>
+<body>
+
+<main class="contenedor-formulario">
+
+    <h1>Añadir nuevo usuario</h1>
+
+    <form id="form-alta-usuario">
+
+        <label>
+            Nombre
+            <input type="text" id="nombre">
+        </label>
+
+        <label>
+            Primer apellido
+            <input type="text" id="apellido1">
+        </label>
+
+        <label>
+            Segundo apellido
+            <input type="text" id="apellido2">
+        </label>
+
+        <label>
+            Correo electrónico
+            <input type="email" id="email">
+        </label>
+
+        <label>
+            Nombre de usuario
+            <input type="text" id="usuario">
+        </label>
+
+        <label>
+            Contraseña
+            <input type="password" id="password">
+        </label>
+
+        <label>
+            Tipo de usuario
+            <select id="rol">
+                <option value="alumno">Alumno</option>
+                <option value="profesor">Docente</option>
+                <option value="secretaria">Secretaría</option>
+            </select>
+        </label>
+        
+        <label>
+        Estado del usuario
+        <select id="estado">
+            <option value="activo">Activo</option>
+            <option value="inactivo">Inactivo</option>
+        </select>
+        </label>
+
+
+        <div class="acciones">
+            <button type="submit">Crear usuario</button>
+        </div>
+
+    </form>
+
+</main>
+
+<script src="../js/anyadir_usuario_secretaria.js"></script>
+</body>
+</html>
