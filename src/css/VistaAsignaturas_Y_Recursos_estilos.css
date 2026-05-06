@@ -563,8 +563,28 @@ body {
 
             }
         }
+
+        
     }
 
+    #modificar-recursos{
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        right: 100px;
+        gap: 20px;
+        bottom: 830px;
+
+        button {
+            background-color: transparent;
+            border: none;
+
+            img{
+                width:70px ;
+                height: 70px;
+            }
+        }
+    }
 /* Adaptación del diseño para pantallas pequeñas */
     @media (max-width: 760px){
 

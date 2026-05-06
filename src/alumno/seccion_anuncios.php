@@ -14,10 +14,10 @@
     <?php
     include "../bbdd/anuncios_bbdd.php";
     include "../bbdd/usuarios.php";
-    $nombre = $_POST["nombreEnviar"];
-    $asignatura = $_POST["asignaturaEnviar"] ?? null;
-    //$nombre = "l.simdre@epsg.upv.es";
-    //$asignatura = "Programacion";
+    //$nombre = $_POST["nombreEnviar"];
+    //$asignatura = $_POST["asignaturaEnviar"] ?? null;
+    $nombre = "l.simdre@epsg.upv.es";
+    $asignatura = "Programacion";
 
 
         if (isset($_POST["todos"]) || isset($anuncio_asignaturas[$asignatura])) {    // Confirmar si el usuario tiene la asignatura matriculada 
@@ -88,6 +88,15 @@
                 }
             }}}}
             ?>
+
+            <div id="modificar-recursos">
+                <button class="opener-dialog"><img src="../imagenes/icono_eliminar.svg" alt="icono-eliminar"></button>
+                <dialog></dialog>
+                <button class="opener-dialog"><img src="../imagenes/icono_lapiz.svg" alt="icono-lapiz"></button>
+                <dialog></dialog>
+                <button class="opener-dialog" id="boton-mas"><img src="../imagenes/icono_mas.svg" alt="icono-mas"></button>
+                <dialog></dialog>
+            </div>
 
 </body>
 </html>
