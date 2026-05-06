@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOA Sección de anuncios</title>
     <link rel="stylesheet" href="../css/VistaAsignaturas_Y_Recursos_estilos.css">
+    <script src="../js/seccion_anuncios.js" defer></script>
 </head>
 <body id="vista-anuncios">
 
@@ -40,7 +41,7 @@
                     foreach($anuncio_asignaturas[$asignatura] as $id => $datos_anuncios){
 
                 ?>
-                <div id="caja-anuncio">
+                <div class="caja-anuncio">
                     <!--Parte morada ( Datos del anuncio )-->
                     <div id="datos_anuncio">
                         <h6><?php echo $datos_anuncios["Asignatura"]; ?>: <?php echo $datos_anuncios["Titulo"]; ?> </h6>
@@ -89,14 +90,6 @@
             }}}}
             ?>
 
-            <div id="modificar-recursos">
-                <button class="opener-dialog"><img src="../imagenes/icono_eliminar.svg" alt="icono-eliminar"></button>
-                <dialog></dialog>
-                <button class="opener-dialog"><img src="../imagenes/icono_lapiz.svg" alt="icono-lapiz"></button>
-                <dialog></dialog>
-                <button class="opener-dialog" id="boton-mas"><img src="../imagenes/icono_mas.svg" alt="icono-mas"></button>
-                <dialog></dialog>
-            </div>
 
 </body>
 </html>
