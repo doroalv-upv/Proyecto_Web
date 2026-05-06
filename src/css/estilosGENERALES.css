@@ -170,7 +170,7 @@ body {
 }
 
 
-/* NIVEL 1: Cursos (Desplegables) */
+/* NIVEL 1: Cursos */
 
 .btn-curso-menu {
     background-color: #EAEAEA;
@@ -257,27 +257,21 @@ body {
     margin-top: auto;
 }
 
-
-/* --- Efecto de pulsación en botones --- */
-
 button:active {
     transform: scale(0.98);
 }
 
 
 /* ==========================================================================
-   ESTILOS ESPECÍFICOS 
+   ESTILOS ESPECÍFICOS: CONTENIDO CENTRAL
    ========================================================================== */
-
-
-/* --- SELECCIÓN DE ASIGNATURAS --- */
 
 .contenido-principal {
     flex-grow: 1;
     padding: 40px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     overflow-y: auto;
 }
 
@@ -321,9 +315,6 @@ button:active {
     display: block;
     flex-shrink: 0;
 }
-
-
-/* --- LISTA DE RECURSOS --- */
 
 .titulo-recursos {
     text-align: center;
@@ -404,9 +395,6 @@ button:active {
     animation: fadeIn 0.3s ease forwards;
 }
 
-
-/* --- Animación de entrada para los recursos --- */
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -455,6 +443,118 @@ button:active {
     width: 100%;
     margin-top: 50px;
     color: #777;
+}
+
+
+/* ==========================================================================
+   ESTILOS DE PROFESOR (Subida y Borrado)
+   ========================================================================== */
+
+.acciones-profesor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.btn-subir-archivo {
+    background-color: white;
+    color: #333;
+    border: 1px solid #333;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background-color 0.2s;
+}
+
+.btn-subir-archivo:hover {
+    background-color: #f0f0f0;
+}
+
+.btn-papelera {
+    background: white;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-papelera svg {
+    width: 20px;
+    height: 20px;
+    stroke: #333;
+}
+
+.btn-papelera.activo {
+    background-color: #C62828;
+    border-color: #C62828;
+}
+
+.btn-papelera.activo svg {
+    stroke: white;
+}
+
+.modo-borrado-activo .tarjeta-recurso {
+    cursor: pointer;
+    border: 2px dashed #C62828;
+    transition: background-color 0.2s;
+}
+
+.modo-borrado-activo .tarjeta-recurso:hover {
+    background-color: #ffebee;
+}
+
+.contenedor-mensajes {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mensaje-toast {
+    background-color: white;
+    border: 1px solid #333;
+    color: #333;
+    padding: 15px 25px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: aparecerDesaparecer 3.5s forwards;
+}
+
+.icono-papelera {
+    width: 20px;
+    height: 20px;
+}
+
+@keyframes aparecerDesaparecer {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
 }
 
 
