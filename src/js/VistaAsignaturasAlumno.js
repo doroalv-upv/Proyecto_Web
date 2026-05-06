@@ -1,3 +1,4 @@
+// Usamos 'const' para los datos porque no van a cambiar durante la ejecución
 const estructuraCursos = [{
         id: "curso_1",
         nombre: "1º Desarrollo Multiplataforma",
@@ -18,16 +19,11 @@ const estructuraCursos = [{
     }
 ];
 
-const mockRecursos = [
-    { tipo: 'PDF', nombre: '"Introducción al Arte Clásico"', autor: 'María Gómez', fecha: '10/05/2026' },
-    { tipo: 'DOCX', nombre: '"Apuntes de repaso"', autor: 'Juan Pérez', fecha: '12/05/2026' },
-    { tipo: 'ZIP', nombre: '"Material extra del tema 1"', autor: 'María Gómez', fecha: '15/05/2026' },
-    { tipo: 'JPG', nombre: '"Esquema visual"', autor: 'Ana López', fecha: '18/05/2026' },
-    { tipo: 'PNG', nombre: '"Diagrama de fases"', autor: 'Juan Pérez', fecha: '20/05/2026' }
-];
-
+// Función de apoyo para sacar el nombre de la asignatura sabiendo solo su ID
 function obtenerNombreAsignatura(idBuscado) {
     let nombreEncontrado = "Asignatura no encontrada";
+
+    // Recorremos los cursos y dentro de cada curso, sus asignaturas
     estructuraCursos.forEach(function(curso) {
         curso.asignaturas.forEach(function(asig) {
             if (asig.id === idBuscado) {
@@ -35,131 +31,133 @@ function obtenerNombreAsignatura(idBuscado) {
             }
         });
     });
+
     return nombreEncontrado;
 }
 
-function obtenerIconoSVG(tipo) {
-    let color = "#333";
-    if (tipo === 'PDF') color = "#C62828";
-    if (tipo === 'DOCX') color = "#1565C0";
-    if (tipo === 'ZIP') color = "#F9A825";
-    if (tipo === 'JPG') color = "#2E7D32";
-    if (tipo === 'PNG') color = "#C62828";
-
-    return '<svg width="40" height="40" viewBox="0 0 40 40"><rect x="2" y="2" width="36" height="36" rx="4" stroke="' + color + '" stroke-width="2" fill="white"/><text x="20" y="24" fill="' + color + '" font-size="10" font-weight="bold" font-family="sans-serif" text-anchor="middle">' + tipo + '</text></svg>';
-}
-
+// Pinta el menú de la izquierda leyendo el array de datos
 function cargarMenu() {
     const contenedorMenu = document.getElementById("lista-asignaturas");
-    if (!contenedorMenu) return;
+    if (!contenedorMenu) return; // Si no existe el contenedor, salimos para no dar error
 
-    contenedorMenu.innerHTML = "";
+    contenedorMenu.innerHTML = ""; // Limpiamos por si acaso
 
+    // Iteramos sobre cada curso
     estructuraCursos.forEach(function(curso) {
+        // 1. Creamos el botón principal del curso
         const btnCurso = document.createElement("button");
         btnCurso.className = "btn-curso-menu";
         btnCurso.innerText = curso.nombre;
         btnCurso.id = "btn_" + curso.id;
 
+        // Al hacer clic, ejecuta la función del acordeón
         btnCurso.addEventListener("click", function() {
             abrirCurso(curso.id);
         });
 
+        // 2. Creamos el div que contendrá las asignaturas (el que se oculta/muestra)
         const divAsignaturas = document.createElement("div");
         divAsignaturas.className = "contenedor-asignaturas-menu";
         divAsignaturas.id = "contenedor_" + curso.id;
 
+        // 3. Iteramos las asignaturas de este curso concreto
         curso.asignaturas.forEach(function(asig) {
             const btnAsig = document.createElement("button");
             btnAsig.className = "btn-asignatura";
             btnAsig.innerText = asig.nombre;
             btnAsig.id = "btn_" + asig.id;
 
-            // SOLUCIÓN AL BUG: Ahora redirige al HTML con el nombre exacto de tu archivo
+            // Al hacer clic, seleccionamos la asignatura
             btnAsig.addEventListener("click", function() {
-                localStorage.setItem('asignaturaActiva', asig.id);
-                localStorage.setItem('cursoActivo', curso.id);
-                window.location.href = 'VistaAsignaturasAlumno.html';
+                seleccionarAsignatura(asig.id, curso.id);
             });
 
             divAsignaturas.appendChild(btnAsig);
         });
 
+        // Metemos el botón del curso y su caja de asignaturas en el menú
         contenedorMenu.appendChild(btnCurso);
         contenedorMenu.appendChild(divAsignaturas);
     });
 }
 
+// Controla el efecto acordeón: abre el curso pulsado y cierra los demás
 function abrirCurso(idCursoBuscado) {
     const todosLosContenedores = document.querySelectorAll(".contenedor-asignaturas-menu");
     const todosLosBotonesCurso = document.querySelectorAll(".btn-curso-menu");
 
+    // Recorremos todos los contenedores usando el índice para coincidir con su botón
     todosLosContenedores.forEach(function(contenedor, index) {
         const botonCorrespondiente = todosLosBotonesCurso[index];
+
         if (contenedor.id === "contenedor_" + idCursoBuscado) {
+            // Alternamos las clases (si está abierto lo cierra y viceversa)
             contenedor.classList.toggle("abierto");
             botonCorrespondiente.classList.toggle("activo");
         } else {
+            // Cerramos forzosamente los que no hemos tocado
             contenedor.classList.remove("abierto");
             botonCorrespondiente.classList.remove("activo");
         }
     });
+
+    // Guardamos en memoria qué curso hemos dejado abierto
     localStorage.setItem("cursoActivo", idCursoBuscado);
 }
 
-function renderizarRecursos() {
-    const contenedor = document.getElementById("contenedor-recursos");
-    const vacio = document.getElementById("estado-vacio");
-    const buscador = document.getElementById("buscador-recursos");
-    const filtro = document.getElementById("filtro-recursos");
+// Se ejecuta al pulsar una asignatura concreta
+function seleccionarAsignatura(idAsignatura, idCurso) {
+    // Guardamos la info en localStorage para que la recuerde si cambiamos de página
+    localStorage.setItem('asignaturaActiva', idAsignatura);
+    localStorage.setItem('cursoActivo', idCurso);
 
-    if (!contenedor || !vacio) return;
+    const nombreAsig = obtenerNombreAsignatura(idAsignatura);
 
-    const textoBusqueda = buscador ? buscador.value.toLowerCase() : "";
-    const valorFiltro = filtro ? filtro.value : "";
+    // Pintamos el título en el centro de la pantalla
+    const tituloPrincipal = document.getElementById("nombre-asignatura-central");
+    if (tituloPrincipal) {
+        tituloPrincipal.innerText = nombreAsig;
+    }
 
-    contenedor.innerHTML = "";
+    // Actualizamos las migas de pan (breadcrumb)
+    const ruta = document.getElementById("migas-pan");
+    if (ruta) {
+        ruta.innerHTML = "<a href='#'>Página principal</a> > Asignaturas > <span>" + nombreAsig + "</span>";
+    }
 
-    const filtrados = mockRecursos.filter(function(recurso) {
-        const textoOk = recurso.nombre.toLowerCase().includes(textoBusqueda) || recurso.autor.toLowerCase().includes(textoBusqueda);
-        const filtroOk = valorFiltro === "" || recurso.tipo === valorFiltro;
-        return textoOk && filtroOk;
+    // Quitamos la clase 'activa' a todos los botones de asignatura
+    const todosBotonesAsig = document.querySelectorAll(".btn-asignatura");
+    todosBotonesAsig.forEach(function(boton) {
+        boton.classList.remove("activa");
     });
 
-    if (filtrados.length === 0) {
-        vacio.classList.remove("oculto");
-    } else {
-        vacio.classList.add("oculto");
+    // Se la ponemos solo al que hemos clicado
+    const botonSeleccionado = document.getElementById("btn_" + idAsignatura);
+    if (botonSeleccionado) {
+        botonSeleccionado.classList.add("activa");
+    }
 
-        filtrados.forEach(function(recurso) {
-            const html = `
-                <div class="tarjeta-recurso">
-                    <div class="tarjeta-izq">
-                        <div class="icono">${obtenerIconoSVG(recurso.tipo)}</div>
-                        <div class="info-principal">
-                            <span class="texto-tipo">Archivo ${recurso.tipo}</span>
-                            <span class="texto-nombre">${recurso.nombre}</span>
-                        </div>
-                    </div>
-                    <div class="tarjeta-der">
-                        <span class="texto-autor">${recurso.autor}</span>
-                        <span class="texto-fecha">${recurso.fecha}</span>
-                    </div>
-                </div>
-            `;
-            contenedor.insertAdjacentHTML('beforeend', html);
-        });
+    // Detalle importante para móvil: Cerramos el menú al elegir para que no moleste
+    if (window.innerWidth <= 768) {
+        const menu = document.getElementById("menu-lateral");
+        if (menu) {
+            menu.classList.remove("abierto");
+            localStorage.setItem("estadoMenuMovil", "cerrado");
+        }
     }
 }
 
+// Revisa si el menú estaba abierto o cerrado al cargar la página
 function restaurarEstadoMenu() {
     const menu = document.getElementById("menu-lateral");
     if (!menu) return;
 
     if (window.innerWidth <= 768) {
+        // En móvil lo obligamos a empezar cerrado siempre para evitar bugs con el botón 'atrás'
         menu.classList.remove("abierto");
         localStorage.setItem("estadoMenuMovil", "cerrado");
     } else {
+        // En PC leemos qué hizo el usuario por última vez
         const estadoPC = localStorage.getItem("estadoMenuPC");
         if (estadoPC === "cerrado") {
             menu.classList.add("cerrado");
@@ -169,69 +167,59 @@ function restaurarEstadoMenu() {
     }
 }
 
+// Abre y cierra el menú lateral
 function toggleMenu() {
     const menu = document.getElementById("menu-lateral");
     if (menu) {
         if (window.innerWidth <= 768) {
             menu.classList.toggle("abierto");
+            // Guardamos el nuevo estado
             const estaAbierto = menu.classList.contains("abierto");
             localStorage.setItem("estadoMenuMovil", estaAbierto ? "abierto" : "cerrado");
         } else {
             menu.classList.toggle("cerrado");
+            // Guardamos el nuevo estado
             const estaCerrado = menu.classList.contains("cerrado");
             localStorage.setItem("estadoMenuPC", estaCerrado ? "cerrado" : "abierto");
         }
     }
 }
+
+// Necesario para que el HTML pueda llamar a esta función desde el onclick
 window.toggleMenu = toggleMenu;
 
-// === INICIALIZACIÓN ===
+// === EVENTOS INICIALES ===
+// Cuando el HTML termina de cargar, arrancamos la aplicación
 document.addEventListener("DOMContentLoaded", function() {
     cargarMenu();
     restaurarEstadoMenu();
 
+    // Leemos la memoria. Si no hay nada (primera vez), cogemos la primera asig del primer curso
     const asigGuardada = localStorage.getItem("asignaturaActiva") || estructuraCursos[0].asignaturas[0].id;
     const cursoGuardado = localStorage.getItem("cursoActivo") || estructuraCursos[0].id;
-    const nombreAsig = obtenerNombreAsignatura(asigGuardada);
 
-    // SOLUCIÓN AL BUG: Actualizamos los links de las migas de pan
-    const migas = document.getElementById("migas-pan");
-    if (migas) {
-        migas.innerHTML = `<a href='#'>Página principal</a> > <a href='VistaAsignaturasAlumno.html'>Asignaturas</a> > <a href='VistaAsignaturasAlumno.html'>${nombreAsig}</a> > <span>Recursos</span>`;
-    }
-
+    // Desplegamos el curso guardado en el acordeón
     const contenedorCurso = document.getElementById("contenedor_" + cursoGuardado);
     const botonCurso = document.getElementById("btn_" + cursoGuardado);
+
     if (contenedorCurso && botonCurso) {
         contenedorCurso.classList.add("abierto");
         botonCurso.classList.add("activo");
     }
 
-    const btnActivo = document.getElementById("btn_" + asigGuardada);
-    if (btnActivo) {
-        btnActivo.classList.add("activa");
-    }
-
-    renderizarRecursos();
-
-    const buscador = document.getElementById("buscador-recursos");
-    if (buscador) {
-        buscador.addEventListener("input", renderizarRecursos);
-    }
-
-    const filtro = document.getElementById("filtro-recursos");
-    if (filtro) {
-        filtro.addEventListener("change", renderizarRecursos);
-    }
+    // Seleccionamos la asignatura guardada
+    seleccionarAsignatura(asigGuardada, cursoGuardado);
 });
 
-// Cierra el menú al tocar fuera (Móvil)
+// === MEJORA DE UX MÓVIL ===
+// Cierra el menú si el usuario toca la pantalla fuera del propio menú
 document.addEventListener("click", function(event) {
     if (window.innerWidth <= 768) {
         const menu = document.getElementById("menu-lateral");
         const btnHamburguesa = document.querySelector(".menu-hamburguesa-movil");
 
         if (menu && menu.classList.contains("abierto")) {
+            // Si el clic NO fue dentro del menú Y TAMPOCO en la hamburguesa...
             if (!menu.contains(event.target) && btnHamburguesa && !btnHamburguesa.contains(event.target)) {
                 menu.classList.remove("abierto");
                 localStorage.setItem("estadoMenuMovil", "cerrado");
