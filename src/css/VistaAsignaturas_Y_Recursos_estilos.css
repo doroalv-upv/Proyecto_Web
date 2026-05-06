@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PARTE 1: ESTILOS GENERALES (Comunes a toda la plataforma DOA)
+   ESTILOS GENERALES (Comunes a toda la plataforma DOA)
    ========================================================================== */
 
 * {
@@ -55,6 +55,24 @@ body {
     display: block;
 }
 
+.elementos-barra-arriba {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar-perfil svg {
+    width: 70px;
+    height: 71px;
+    display: block;
+}
+
+.campanita svg {
+    width: 42px;
+    height: auto;
+    display: block;
+}
+
 .migas-pan {
     font-size: 0.95rem;
 }
@@ -76,24 +94,6 @@ body {
 
 .migas-pan span {
     font-weight: bold;
-}
-
-.elementos-barra-arriba {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.avatar-perfil svg {
-    width: 70px;
-    height: 71px;
-    display: block;
-}
-
-.campanita svg {
-    width: 42px;
-    height: auto;
-    display: block;
 }
 
 
@@ -258,12 +258,19 @@ body {
 }
 
 
+/* --- Efecto de pulsación en botones --- */
+
+button:active {
+    transform: scale(0.98);
+}
+
+
 /* ==========================================================================
-   PARTE 2: ESTILOS ESPECÍFICOS DE LAS VISTAS
+   ESTILOS ESPECÍFICOS 
    ========================================================================== */
 
 
-/* --- VISTA: ASIGNATURAS --- */
+/* --- SELECCIÓN DE ASIGNATURAS --- */
 
 .contenido-principal {
     flex-grow: 1;
@@ -285,21 +292,21 @@ body {
     margin-bottom: 40px;
     width: 100%;
     max-width: 400px;
+    text-align: center;
 }
 
 .recursos {
     display: flex;
     gap: 20px;
-    width: 100%;
+    flex-direction: row;
 }
 
 .btn-recurso {
-    background: white;
+    background: transparent;
     border: 2px solid var(--doa-blue);
     padding: 20px;
     border-radius: 8px;
-    width: 100%;
-    max-width: 250px;
+    width: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -307,14 +314,16 @@ body {
     cursor: pointer;
 }
 
+.btn-recurso img,
 .btn-recurso svg {
     width: 80px;
     height: 80px;
+    display: block;
     flex-shrink: 0;
 }
 
 
-/* --- VISTA: RECURSOS --- */
+/* --- LISTA DE RECURSOS --- */
 
 .titulo-recursos {
     text-align: center;
@@ -392,6 +401,21 @@ body {
     padding: 15px 25px;
     background-color: #F5F5F5;
     width: 100%;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+
+/* --- Animación de entrada para los recursos --- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .tarjeta-izq {
@@ -435,7 +459,7 @@ body {
 
 
 /* ==========================================================================
-   PARTE 3: VERSIÓN MÓVIL (RESPONSIVE)
+   VERSIÓN MÓVIL
    ========================================================================== */
 
 @media (max-width: 768px) {
@@ -449,9 +473,6 @@ body {
     }
     .barra-arriba {
         height: 60px;
-    }
-    .layout-principal {
-        height: calc(100vh - 60px);
     }
     .logo {
         width: 84px;
@@ -520,7 +541,8 @@ body {
     .tarjeta-recurso {
         width: 100%;
     }
-    .recursos {
+    .recursos,
+    .tarjeta-recurso {
         flex-direction: column;
     }
     .btn-recurso {
@@ -528,14 +550,12 @@ body {
         justify-content: flex-start;
         padding-left: 20px;
     }
-    .btn-recurso svg,
-    .btn-recurso img {
+    .btn-recurso img,
+    .btn-recurso svg {
         width: 41px;
         height: 38px;
-        flex-shrink: 0;
     }
     .tarjeta-recurso {
-        flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
