@@ -99,32 +99,40 @@
       </button>
     </div>
 
-    <form class="ficha-formulario">
-      <label>
-        Nombre
-        <input type="text" value="Lief" disabled>
-      </label>
+   
+<form class="ficha-formulario">
 
-      <label>
-        Apellidos
-        <input type="text" value="Simants Dredge" disabled>
-      </label>
+  <label>
+    Nombre
+    <input type="text" id="ficha-nombre" disabled>
+  </label>
 
-      <label>
-        DNI
-        <input type="text" value="01-9218611" disabled>
-      </label>
+  <label>
+    Apellidos
+    <input type="text" id="ficha-apellidos" disabled>
+  </label>
 
-      <label>
-        Correo electrónico
-        <input type="email" value="l.simdre@epsg.upv.es" disabled>
-      </label>
+  <label>
+    DNI
+    <input type="text" id="ficha-dni" disabled>
+  </label>
 
-      <label>
-        Rol
-        <input type="text" value="Alumno" disabled>
-      </label>
-    </form>
+  <label>
+    Correo electrónico
+    <input type="email" id="ficha-email" disabled>
+  </label>
+
+  <label>
+    Rol
+    <select id="ficha-rol" disabled>
+      <option value="alumno">Alumno</option>
+      <option value="profesor">Docente</option>
+      <option value="secretaria">Secretaría</option>
+    </select>
+  </label>
+
+</form>
+
 
     <div class="ficha-footer">
       <button class="btn-accion alta">Dar de alta</button>

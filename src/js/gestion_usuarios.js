@@ -14,11 +14,8 @@ const USUARIOS = [
     { id: 10, nombre: "José Luis", apellidos: "Gimenez", dni: "Sin DNI", email: "jogilo@upvnet.upv.es", rol: "profesor" }
 ];
 
-// Avatar
 const AVATAR_SVG = `
-<img src="img/icono_perfil.svg"
-     style="width:40px;height:40px;flex-shrink:0;border-radius:50%;"
-     alt="Avatar">
+<img src="img/icono_perfil.svg" style="width:40px;height:40px;border-radius:50%;" alt="Avatar">
 `;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -28,23 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const listaUsuarios = document.getElementById("lista-usuarios");
     const mensajeVacio = document.getElementById("mensaje-vacio");
 
-    const btnHamburguesa = document.getElementById("btn-hamburguesa");
-    const sidebar = document.getElementById("sidebar");
-
     const popupFicha = document.getElementById("popup-ficha-usuario");
     const btnCerrarPopup = document.getElementById("btn-cerrar-popup");
-    const popupInfo = document.getElementById("popup-info-usuario");
 
-    // Menú hamburguesa (solo si existe)
-    if (btnHamburguesa && sidebar) {
-        btnHamburguesa.addEventListener("click", function () {
-            if (window.innerWidth <= 768) {
-                sidebar.classList.toggle("abierto");
-            } else {
-                sidebar.classList.toggle("cerrado");
-            }
-        });
-    }
+    // FICHA inputs
+    const fichaNombre = document.getElementById("ficha-nombre");
+    const fichaApellidos = document.getElementById("ficha-apellidos");
+    const fichaDni = document.getElementById("ficha-dni");
+    const fichaEmail = document.getElementById("ficha-email");
+    const fichaRol = document.getElementById("ficha-rol");
 
     function pintarUsuarios(usuarios) {
         listaUsuarios.innerHTML = "";
@@ -56,83 +45,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
         mensajeVacio.classList.add("oculto");
 
-        usuarios.forEach(function (usuario) {
+        usuarios.forEach(usuario => {
             const li = document.createElement("li");
             li.className = "tarjeta-usuario";
 
-            let inicialRol = "";
-            if (usuario.rol === "alumno") inicialRol = "A";
-            if (usuario.rol === "profesor") inicialRol = "P";
-            if (usuario.rol === "secretaria") inicialRol = "S";
-
-            const textoUsuario = `${usuario.nombre} ${usuario.apellidos}. ${usuario.dni}. ${inicialRol}`;
+            let inicialRol = usuario.rol[0].toUpperCase();
 
             li.innerHTML = `
                 ${AVATAR_SVG}
-                <span class="info-tarjeta" style="flex-grow:1;text-align:center;">
-                    ${textoUsuario}
+                <span style="flex-grow:1;text-align:center">
+                  ${usuario.nombre} ${usuario.apellidos}. ${usuario.dni}. ${inicialRol}
                 </span>
             `;
 
-            li.addEventListener("click", function () {
-                abrirFichaUsuario(usuario);
-            });
-
+            li.addEventListener("click", () => abrirFichaUsuario(usuario));
             listaUsuarios.appendChild(li);
         });
     }
 
     function filtrarUsuarios() {
-        const texto = inputBusqueda.value.trim().toLowerCase();
-        const rol = selectRol.value.trim().toLowerCase();
+        const texto = inputBusqueda.value.toLowerCase();
+        const rol = selectRol.value;
 
-        const filtrados = USUARIOS.filter(function (usuario) {
-            if (rol !== "" && usuario.rol !== rol) return false;
-
-            if (texto !== "") {
-                const nombreCompleto = (usuario.nombre + " " + usuario.apellidos).toLowerCase();
-                const dniLower = usuario.dni.toLowerCase();
-                const emailLower = usuario.email.toLowerCase();
-
-                if (
-                    !nombreCompleto.includes(texto) &&
-                    !dniLower.includes(texto) &&
-                    !emailLower.includes(texto)
-                ) {
-                    return false;
-                }
-            }
-            return true;
+        const filtrados = USUARIOS.filter(u => {
+            if (rol && u.rol !== rol) return false;
+            return (
+                u.nombre.toLowerCase().includes(texto) ||
+                u.apellidos.toLowerCase().includes(texto) ||
+                u.dni.toLowerCase().includes(texto) ||
+                u.email.toLowerCase().includes(texto)
+            );
         });
 
         pintarUsuarios(filtrados);
     }
 
     function abrirFichaUsuario(usuario) {
-        if (popupInfo) {
-            popupInfo.innerHTML = `
-                <strong>Nombre:</strong> ${usuario.nombre}<br>
-                <strong>Apellidos:</strong> ${usuario.apellidos}<br>
-                <strong>DNI:</strong> ${usuario.dni}<br>
-                <strong>Correo:</strong> ${usuario.email}<br>
-                <strong>Rol:</strong> <span style="text-transform:capitalize;">${usuario.rol}</span>
-            `;
-        }
+        fichaNombre.value = usuario.nombre;
+        fichaApellidos.value = usuario.apellidos;
+        fichaDni.value = usuario.dni;
+        fichaEmail.value = usuario.email;
+        fichaRol.value = usuario.rol;
 
         popupFicha.showModal();
     }
 
-    if (btnCerrarPopup) {
-        btnCerrarPopup.addEventListener("click", function () {
-            popupFicha.close();
-        });
-    }
-
-    popupFicha.addEventListener("click", function (evento) {
-        if (evento.target === popupFicha) {
-            popupFicha.close();
-        }
-    });
+    btnCerrarPopup.addEventListener("click", () => popupFicha.close());
 
     inputBusqueda.addEventListener("input", filtrarUsuarios);
     selectRol.addEventListener("change", filtrarUsuarios);
@@ -140,42 +98,41 @@ document.addEventListener("DOMContentLoaded", function () {
     pintarUsuarios(USUARIOS);
 });
 
-/* ====== ESTADO ACTIVO / INACTIVO ====== */
+/* Permite editar al pulsar el icono del lapiz */
+document.addEventListener("DOMContentLoaded", function () {
+
+    const btnEditar = document.querySelector(".btn-editar");
+    const inputs = document.querySelectorAll(".ficha-formulario input, .ficha-formulario select");
+
+    if (!btnEditar || inputs.length === 0) return;
+
+    let modoEdicion = false;
+
+    btnEditar.addEventListener("click", function () {
+        modoEdicion = !modoEdicion;
+
+        inputs.forEach(input => {
+            input.disabled = !modoEdicion;
+        });
+    });
+
+});
+/*Dar de alta/baja para cambiar de activo a inactivo*/
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const btnAlta = document.querySelector(".btn-accion.alta");
     const btnBaja = document.querySelector(".btn-accion.baja");
     const estadoTexto = document.querySelector(".estado");
 
-    if (btnAlta && btnBaja && estadoTexto) {
-        btnAlta.addEventListener("click", function () {
-            estadoTexto.textContent = "Estado: Activo";
-        });
+    if (!btnAlta || !btnBaja || !estadoTexto) return;
 
-        btnBaja.addEventListener("click", function () {
-            estadoTexto.textContent = "Estado: Inactivo";
-        });
-    }
+    btnAlta.addEventListener("click", function () {
+        estadoTexto.textContent = "Estado: Activo";
+    });
 
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const btnEditar = document.querySelector(".btn-editar");
-    const inputsFicha = document.querySelectorAll(".ficha-formulario input");
-
-    if (btnEditar && inputsFicha.length > 0) {
-
-        let editando = false;
-
-        btnEditar.addEventListener("click", function () {
-            editando = !editando;
-
-            inputsFicha.forEach(input => {
-                input.disabled = !editando;
-            });
-        });
-
-    }
+    btnBaja.addEventListener("click", function () {
+        estadoTexto.textContent = "Estado: Inactivo";
+    });
 
 });
