@@ -664,4 +664,19 @@ button:active {
         padding-left: 60px;
         text-align: left;
     }
+    /* ==========================================================================
+   ESTILOS DE PROFESOR (Vista Asignaturas Profesor)
+   ========================================================================== */
+    .icono-boton-grande {
+        width: 60px;
+        height: 60px;
+        stroke: var(--doa-blue);
+        flex-shrink: 0;
+    }
+    .contenedor-botones-profesor {
+        justify-content: center;
+        flex-wrap: wrap;
+        /* En móviles bajará a la siguiente fila automáticamente */
+        width: 100%;
+    }
 }
