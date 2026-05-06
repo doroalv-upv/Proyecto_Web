@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOA - Gestión de Usuarios</title>
+    <link rel="stylesheet" href="../css/gestion_usuarios.css">
+</head>
+<body>
+
+    <!-- =================== BARRA SUPERIOR =================== -->
+    <header class="barra-arriba">
+        <div class="area-logo">
+            <a href="#"><img src="../imagenes/LOGO_DOA.svg" alt="Logo de DOA" class="logo"></a>
+            <span class="migas-pan">Página principal > Gestión de usuarios</span>
+        </div>
+
+        <div class="elementos-barra-arriba">
+            <button class="campanita btn-icono" style="background: none; border: none; cursor: pointer;">
+                <img src="../imagenes/icono_notificacion.svg" alt="Notificaciones" style="width: 42px;">
+            </button>
+            <button class="avatar-perfil btn-icono" style="background: none; border: none; cursor: pointer;">
+                <img src="../imagenes/icono_perfil.svg" alt="Perfil" style="width: 70px;">
+            </button>
+        </div>
+    </header>
+
+    <!-- =================== LAYOUT PRINCIPAL =================== -->
+    <div class="layout-principal">
+
+        <!-- =================== MENÚ LATERAL =================== -->
+        <aside class="sidebar cerrado" id="sidebar">
+            <button class="menu-lateral-soloPC" id="btn-hamburguesa" aria-label="Abrir menú">
+                <img src="../imagenes/icono_hamburguesa.svg" alt="Menú" style="width: 35px;">
+            </button>
+
+            <!-- Contenido del menú   -->
+            <div class="contenido-menu">
+                
+                <!-- 1. Gestor de usuarios en morado -->
+                <button class="btn-morado" onclick="window.location.href='gestion_usuarios.html'">Gestor de usuarios</button>
+                
+                <!-- 2. Grupo: Gestor de cursos -->
+                <div class="grupo-cursos">
+                    <button class="btn-morado" onclick="window.location.href='gestor_cursos.html'">Gestor de cursos</button>
+                    
+                    <!-- 3. Dentro de cursos: Gestor de asignaturas en azul bordeado -->
+                    <div class="sub-menu">
+                        <button class="btn-borde-azul" onclick="window.location.href='gestor_asignaturas.html'">Gestor de asignaturas</button>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- =================== CONTENIDO PRINCIPAL =================== -->
+        <main class="contenido-principal">
+            <h1 class="titulo-gestion" style="text-align: center; width: 100%; margin-bottom: 30px;">Gestión de usuarios</h1>
+
+            <div class="barra-busqueda-filtros">
+                <div class="input-busqueda-wrapper">
+                    <svg class="icono-lupa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="input-busqueda" class="input-busqueda" placeholder="Buscar...">
+                </div>
+
+                <div class="select-filtro-wrapper">
+                    <select id="select-rol" class="select-filtro">
+                        <option value="">Filtrar</option>
+                        <option value="alumno">Alumno</option>
+                        <option value="profesor">Profesor</option>
+                        <option value="secretaria">Secretaría</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="contenedor-recursos" id="contenedor-usuarios-lista">
+                <ul id="lista-usuarios" class="lista-usuarios" style="list-style: none; width: 100%; padding: 0; display: flex; flex-direction: column; gap: 15px;">
+                    <!-- Se rellena con JS -->
+                </ul>
+                <p id="mensaje-vacio" class="estado-vacio oculto">No se han encontrado usuarios</p>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- POPUP DE FICHA -->
+
+<dialog id="popup-ficha-usuario" class="popup-ficha">
+  <div class="ficha-usuario">
+
+    <div class="ficha-header">
+      <img src="../imagenes/icono_perfil.svg" alt="icono-perfil">
+
+      <button class="btn-editar" aria-label="Editar">
+        <img src="../imagenes/icono_lapiz.svg" alt="icono-lapiz">
+      </button>
+    </div>
+
+   
+<form class="ficha-formulario">
+
+  <label>
+    Nombre
+    <input type="text" id="ficha-nombre" disabled>
+  </label>
+
+  <label>
+    Apellidos
+    <input type="text" id="ficha-apellidos" disabled>
+  </label>
+
+  <label>
+    DNI
+    <input type="text" id="ficha-dni" disabled>
+  </label>
+
+  <label>
+    Correo electrónico
+    <input type="email" id="ficha-email" disabled>
+  </label>
+
+  <label>
+    Rol
+    <select id="ficha-rol" disabled>
+      <option value="alumno">Alumno</option>
+      <option value="profesor">Docente</option>
+      <option value="secretaria">Secretaría</option>
+    </select>
+  </label>
+
+</form>
+
+
+    <div class="ficha-footer">
+      <button class="btn-accion alta">Dar de alta</button>
+      <button class="btn-accion baja">Dar de baja</button>
+      <span class="estado">Estado: Inactivo</span>
+      <button class="btn-accion cerrar" id="btn-cerrar-popup">Cerrar</button>
+    </div>
+
+  </div>
+</dialog>
+
+
+    <script src="../js/gestion_usuarios.js"></script>
+</body>
+</html>
