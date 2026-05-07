@@ -1,0 +1,3 @@
+<?php
+$rutaBase = "/daniweb/";
+?>
