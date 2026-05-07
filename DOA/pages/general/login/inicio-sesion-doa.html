@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos de la página login de DOA -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOA - Iniciar Sesión</title>
+
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="../../../assets/css/general/login/inicio-sesion.css">
+</head>
+
+<body>
+
+    <!-- Página login de DOA -->
+    <main class="login">
+
+        <!-- Logo DOA -->
+        <a href="../landing/landing-page-doa.html" class="logo-login">
+            <img src="../../../assets/imagenes/Logo_DOA_Blanco.svg" alt="Logo DOA" class="logo-login-pc">
+            <img src="../../../assets/imagenes/Logo_DOA_Blanco_Morado.svg" alt="Logo DOA" class="logo-login-movil">
+        </a>
+        <!-- fin logo DOA -->
+
+        <!-- Tarjeta blanca con formulario -->
+        <section class="tarjeta-login">
+
+            <h1 class="bienvenida">Te damos la bienvenida.</h1>
+
+            <!-- Formulario de inicio de sesión -->
+            <form id="form-login" class="formulario-login" action="../../../componentes/login.php" method="POST">
+
+                <!-- Indica al login.php que este formulario viene de DOA -->
+                <input type="hidden" name="origen" value="doa">
+
+                <input
+                    type="email"
+                    name="nombre"
+                    id="input-correo"
+                    class="campo-login"
+                    placeholder="Correo electrónico"
+                    required>
+
+                <input
+                    type="password"
+                    name="clave"
+                    id="input-contrasena"
+                    class="campo-login"
+                    placeholder="Contraseña"
+                    required>
+
+                <!-- Mensaje de error -->
+                <p id="mensaje-error" class="mensaje-error oculto">
+                    Credenciales inválidas
+                </p>
+
+                <button type="submit" class="btn-iniciar-sesion">
+                    Iniciar Sesión
+                </button>
+
+            </form>
+            <!-- fin formulario de inicio de sesión -->
+
+        </section>
+        <!-- fin tarjeta blanca con formulario -->
+
+    </main>
+    <!-- fin página login de DOA -->
+
+    <!-- Script solo para mostrar error visual si login.php devuelve ?error=1 -->
+    <script>
+        const parametros = new URLSearchParams(window.location.search);
+        const mensajeError = document.getElementById("mensaje-error");
+        const inputCorreo = document.getElementById("input-correo");
+        const inputContrasena = document.getElementById("input-contrasena");
+
+        if (parametros.get("error") === "1") {
+            mensajeError.classList.remove("oculto");
+            inputCorreo.classList.add("error");
+            inputContrasena.classList.add("error");
+        }
+
+        inputCorreo.addEventListener("input", function () {
+            mensajeError.classList.add("oculto");
+            inputCorreo.classList.remove("error");
+            inputContrasena.classList.remove("error");
+        });
+
+        inputContrasena.addEventListener("input", function () {
+            mensajeError.classList.add("oculto");
+            inputCorreo.classList.remove("error");
+            inputContrasena.classList.remove("error");
+        });
+    </script>
+
+</body>
+</html>

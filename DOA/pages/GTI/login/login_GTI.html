@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - GTI</title>
+    <link rel="stylesheet" href="../../../assets/css/GTI/login/login.css">
+</head>
+<body>
+
+    <!-- =================== AQUÍ EMPIEZA SECCIÓN HEADER (LOGO + TÍTULO) =================== -->
+<header class="header">
+    <a href="../landing/LandingPageGTI.html">
+        <img src="../../../assets/imagenes/Logo_GTI.svg" alt="Logo GTI - Grado en Tecnologías Interactivas" class="logo-gti">
+    </a>
+    <h1 class="titulo">INICIAR SESIÓN</h1>
+</header>
+    <!-- =================== AQUÍ ACABA SECCIÓN HEADER =================== -->
+
+    <!-- =================== AQUÍ EMPIEZA SECCIÓN FORMULARIO DE LOGIN =================== -->
+    <main class="contenedor-formulario">
+
+        <!-- El formulario envía los datos al archivo login.php por POST -->
+        <form id="form-login" class="form-login" action="../../../componentes/login.php" method="POST">
+            <!-- Campo oculto para indicar el origen del loginwt -->
+            <input type="hidden" name="origen" value="gti">
+            <!-- Campo de correo electronico -->
+            <input
+                type="text"
+                name="nombre"
+                id="usuario"
+                class="input-login"
+                placeholder="Correo electronico"
+                required>
+
+            <!-- Campo de contraseña -->
+            <div class="campo-password">
+                <input
+                    type="password"
+                    name="clave"
+                    id="password"
+                    class="input-login"
+                    placeholder="Contraseña"
+                    required>
+            </div>
+            <p id="mensaje-error" class="mensaje-error">
+                Error: Credenciales incorrectas
+            </p>
+            <!-- Botón de iniciar sesión -->
+            <button type="submit" class="btn-iniciar">Iniciar Sesión</button>
+
+            <!-- Mensaje de error de credenciales -->
+
+
+        </form>
+
+    </main>
+    <!-- =================== AQUÍ ACABA SECCIÓN FORMULARIO DE LOGIN =================== -->
+
+    <!-- =================== AQUÍ EMPIEZA SECCIÓN FOOTER =================== -->
+    <footer class="footer">
+        <div class="footer-item">
+            <img src="../../../assets/iconos/Icono_Dispositivos.svg" alt="Icono dispositivos">
+            <p>Accede desde PC y móvil</p>
+        </div>
+
+        <div class="footer-item">
+            <img src="../../../assets/iconos/Icono_Escudo.svg" alt="Icono escudo de seguridad">
+            <p>Mejora el rendimiento</p>
+        </div>
+
+        <div class="footer-item">
+            <img src="../../../assets/iconos/Icono_Comunidad.svg" alt="Icono comunidad">
+            <p>Conecta con la comunidad</p>
+        </div>
+    </footer>
+    <!-- =================== AQUÍ ACABA SECCIÓN FOOTER =================== -->
+
+    <!-- Script para mostrar error solo si login.php devuelve ?error=1 -->
+<script>
+    const parametros = new URLSearchParams(window.location.search);
+    const mensajeError = document.getElementById("mensaje-error");
+
+    if (parametros.get("error") === "1") {
+        mensajeError.style.visibility = "visible";
+    }
+</script>
+
+</body>
+</html>
