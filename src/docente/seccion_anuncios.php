@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,97 +8,140 @@
     <script src="../js/seccion_anuncios.js" defer></script>
 </head>
 <body id="vista-anuncios">
+<div id="modificar-recursos">
+
+    <div id="toolbar-acciones">
+    <!-- ELIMINAR -->
+        <button class="icono-accion" data-accion="eliminar">
+            <img src="../imagenes/icono_eliminar.svg" alt="Eliminar">
+        </button>
+
+        <!-- EDITAR -->
+        <button class="icono-accion" data-accion="editar">
+            <img src="../imagenes/icono_lapiz.svg" alt="Editar">
+        </button>
+
+        <!-- AÑADIR (independiente) -->
+        <button class="opener-dialog" data-accion="anadir">
+            <img src="../imagenes/icono_mas.svg" alt="Añadir">
+        </button>
+    </div>
+
+    <h1> Anuncios </h1>
+
+
     <?php
-        include("../alumno/seccion_anuncios.php");
-    ?>
-                <!--Boton de eliminar anuncio-->
-               <div id="modificar-anuncios">
-                <button class="opener-dialog"><img src="../imagenes/icono_eliminar.svg" alt="icono-eliminar"></button>
-                <dialog class="popup eliminar-anuncios">
+    include "../bbdd/anuncios_bbdd.php";
+    include "../bbdd/usuarios.php";
+    //$nombre = $_POST["nombreEnviar"];
+    //$asignatura = $_POST["asignaturaEnviar"] ?? null;
+    $nombre = "l.simdre@epsg.upv.es";
+    $asignatura = "Programacion";
 
-                <h2> ¿ Esta seguro que quiere eliminar este anuncio? </h2>
 
-                <div class="boton-decision boton-eliminar">
-                    <button class="cerrar-popup"><h4>Cancelar</h4></button>
-                    <button class="cerrar-popup"><h4>Confirmar</h4></button>
+        if (isset($_POST["todos"]) || isset($anuncio_asignaturas[$asignatura])) {    // Confirmar si el usuario tiene la asignatura matriculada 
+            if (!isset($_POST["todos"]) && empty($anuncio_asignaturas[$asignatura])) {
+            echo "<h4>No hay anuncios</h4>";
+            }
+            else{
+
+            if (isset($_POST["todos"]) || existeUsuarioAsignatura($nombre,$asignatura) == true){
+
+            ?>
+            <section>
+                <!--Caja del anuncio-->
+                <!--Ver solo anuncios de un asignatura especifica-->
+                <?php
+                    if(!isset($_POST["todos"])){
+                        
+                ?>
+                <?php
+                    foreach($anuncio_asignaturas[$asignatura] as $id => $datos_anuncios){
+
+                ?>
+                
+                <div class="caja-anuncio"
+                    data-id="<?= $id ?>"
+                    data-titulo="<?= htmlspecialchars($datos_anuncios['Titulo']) ?>"
+                    data-contenido="<?= htmlspecialchars($datos_anuncios['Contenido']) ?>">
+
+                    <div id="datos_anuncio">
+                        <h6><?= $datos_anuncios["Asignatura"] ?>: <?= $datos_anuncios["Titulo"] ?></h6>
+                        <h6><?= $datos_anuncios["Autor"] ?></h6>
+                        <h6><?= $datos_anuncios["Fecha"] ?></h6>
+                    </div>
+
+                    <p><?= $datos_anuncios["Contenido"] ?></p>
                 </div>
-                </dialog>
 
-                <!--Boton de editar anuncio-->
-                <button class="opener-dialog"><img src="../imagenes/icono_lapiz.svg" alt="icono-lapiz"></button>
-                <dialog class="popup">
-                    <form class="campos-texto">
+                <?php
+                    }
+                    
+                ?>
+            </section>
+            <?php
+                    }
+                    else{
 
-                    <!-- Titulo del anuncio -->
-                    <label for="titulo">
-                        <p>Introduce el título del anuncio</p>
-                        <input 
-                            type="text" 
-                            id="titulo" 
-                            name="titulo" 
-                            placeholder="<?php echo $datos_anuncios["Titulo"]; ?>"
-                        <?php echo $datos_anuncios["Titulo"]; ?>>
-                    </label>
+                    ?>
+            <!--Ver solo anuncios de todas las asignaturas pertenecientes al usuario -->
+            <?php ?>
 
-                    <!-- Descripcion del anuncio -->
-                    <label for="descripcion">
-                        <p>Introduce la descripción del anuncio</p>
-                        <textarea 
-                            id="descripcion" 
-                            name="descripcion" 
-                            placeholder=""
-                            rows="26"
-                        ><?php echo $datos_anuncios["Contenido"]; ?> ?></textarea>
-                    </label>
-                </form>
+                <?php
+                foreach($anuncio_asignaturas as $asignaturaLista => $lista_anuncios){
+                    if(existeUsuarioAsignatura($nombre,$asignaturaLista) == true){
+                        foreach($lista_anuncios as $id => $datos_anuncios){
 
-                <!--Boton de confirmacion y Cancelar-->
-                <div class="boton-decision">
-                    <button class="cerrar-popup"><h4>Cancelar</h4></button>
-                    <button class="cerrar-popup"><h4>Confirmar</h4></button>
-                </div>
-            
-        
+                    ?>
+                    <div id="caja-anuncio">
+                        <!--Parte morada ( Datos del anuncio )-->
+                        <div id="datos_anuncio">
+                            <h6><?php echo $datos_anuncios["Asignatura"]; ?>: <?php echo $datos_anuncios["Titulo"]; ?> </h6>
+                            <h6><?php echo $datos_anuncios["Autor"]; ?> </h6>
+                            <h6><?php echo $datos_anuncios["Fecha"]; ?> </h6>
 
-                </dialog>
+                        </div>
+                        <!--Contenido del anuncio-->
+                        <p><?php echo $datos_anuncios["Contenido"]; ?> </p>
+                    </div>
 
-                <!--Boton de añadir anuncio-->
-                <button class="opener-dialog" ><img src="../imagenes/icono_mas.svg" alt="icono-mas"></button>
-                <dialog class="popup" >
+            <?php
+                        }
+                    }
+                }
+            }}}}
+            ?>
 
-             
-                <form class="campos-texto">
+</div>
 
-                    <!-- Titulo del anuncio -->
-                    <label for="titulo">
-                        <p>Introduce el título del anuncio</p>
-                        <input 
-                            type="text" 
-                            id="titulo" 
-                            name="titulo" 
-                            placeholder="Título"
-                        >
-                    </label>
+<!-- POPUP ELIMINAR -->
+<dialog id="popup-eliminar">
+    <p>¿Está seguro que quiere eliminar este anuncio?</p>
 
-                    <!-- Descripcion del anuncio -->
-                    <label for="descripcion">
-                        <p>Introduce la descripción del anuncio</p>
-                        <textarea 
-                            id="descripcion" 
-                            name="descripcion" 
-                            placeholder="Descripción"
-                            rows="26"
-                        ></textarea>
-                    </label>
-                </form>
+    <div class="boton-decision">
+        <button class="cerrar-popup">Volver atrás</button>
+        <button class="cerrar-popup">Confirmar</button>
+    </div>
+</dialog>
 
-                <!--Boton de confirmacion y Cancelar-->
-                <div class="boton-decision">
-                    <button class="cerrar-popup"><h4>Cancelar</h4></button>
-                    <button class="cerrar-popup"><h4>Confirmar</h4></button>
-                </div>
-            
-                </dialog>
-            </div>
+<!-- POPUP EDITAR -->
+<dialog id="popup-editar">
+    <label>
+        <p>Introduce el nuevo título del anuncio</p>
+        <input type="text" id="editar-titulo">
+    </label>
+
+    <label>
+        <p>Introduce la nueva descripción del anuncio</p>
+        <textarea id="editar-contenido" rows="10"></textarea>
+    </label>
+
+    <div class="boton-decision">
+        <button class="cerrar-popup">Cancelar</button>
+        <button class="cerrar-popup">Confirmar</button>
+    </div>
+</dialog>
+
+
 </body>
 </html>
