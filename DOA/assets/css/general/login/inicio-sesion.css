@@ -1,0 +1,214 @@
+/* RESET BÁSICO */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* LOGIN */
+
+.login {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../../imagenes/FINAL_FONDO_TEXTLESS.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+
+/* LOGO */
+
+.logo-login {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    z-index: 10;
+}
+
+.logo-login img {
+    width: 240px;
+    height: auto;
+}
+
+.logo-login-pc {
+    display: block;
+}
+
+.logo-login-movil {
+    display: none;
+}
+
+
+/* TARJETA LOGIN */
+
+.tarjeta-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    padding: 60px 70px;
+    width: 480px;
+    max-width: 90%;
+}
+
+.bienvenida {
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+
+/* FORMULARIO */
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.campo-login {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #6A0050;
+    border-radius: 8px;
+    background-color: transparent;
+    padding: 0 22px;
+    font-size: 1rem;
+    color: #6A0050;
+    font-weight: bold;
+    outline: none;
+}
+
+.campo-login::placeholder {
+    color: #6A0050;
+    text-align: center;
+    opacity: 1;
+}
+
+.campo-login:focus {
+    border-color: #4a0038;
+}
+
+.campo-login.error {
+    border-color: #c00000;
+    color: #c00000;
+}
+
+.campo-login.error::placeholder {
+    color: #c00000;
+}
+
+.mensaje-error {
+    color: #000000;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: -8px;
+    margin-bottom: -5px;
+    font-weight: 500;
+}
+
+.oculto {
+    display: none;
+}
+
+.btn-iniciar-sesion {
+    background-color: #0455AD;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+    font-family: inherit;
+}
+
+.btn-iniciar-sesion:hover {
+    background-color: #034894;
+}
+
+
+/* VERSIÓN MÓVIL */
+
+@media (max-width: 768px) {
+
+    .login {
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px 15px 30px 15px;
+    }
+
+    .logo-login {
+        top: 18px;
+        left: 15px;
+    }
+
+    .logo-login img {
+        width: 84px;
+        height: auto;
+    }
+
+    .logo-login-pc {
+        display: none;
+    }
+
+    .logo-login-movil {
+        display: block;
+    }
+
+    .tarjeta-login {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+        padding: 35px 30px;
+        border-radius: 18px;
+    }
+
+    .bienvenida {
+        font-size: 1.15rem;
+        margin-bottom: 30px;
+    }
+
+    .formulario-login {
+        gap: 20px;
+    }
+
+    .campo-login {
+        height: 44px;
+        font-size: 0.9rem;
+        padding: 0 18px;
+        border-width: 1.5px;
+    }
+
+    .btn-iniciar-sesion {
+        padding: 12px 0;
+        font-size: 1rem;
+    }
+
+    .mensaje-error {
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,302 @@
+/* Página de gestión de anuncios docente */
+
+.pagina-anuncios-docente {
+    gap: 25px;
+}
+
+/* Cabecera de la sección */
+
+.cabecera-anuncios-docente {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cabecera-anuncios-docente h1 {
+    color: #333333;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.cabecera-anuncios-docente p {
+    color: #555555;
+    font-size: 1.1rem;
+}
+
+/* Botón añadir */
+
+.boton-anadir-anuncio {
+    border: none;
+    background-color: #8A0078;
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.boton-anadir-anuncio img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+}
+
+.boton-anadir-anuncio:hover {
+    background-color: #6f0060;
+}
+
+/* Contenedor de anuncios */
+
+.contenedor-anuncios-docente {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Tarjeta de anuncio */
+
+.tarjeta-anuncio-docente {
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Parte superior */
+
+.datos-anuncio-docente {
+    background-color: #8A0078;
+    color: #FFFFFF;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.datos-anuncio-docente h2 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.datos-anuncio-docente p {
+    font-size: 0.95rem;
+}
+
+.meta-anuncio-docente {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+
+/* Contenido */
+
+.contenido-anuncio-docente {
+    padding: 18px 20px;
+    background-color: #FFFFFF;
+}
+
+.contenido-anuncio-docente p {
+    line-height: 1.5;
+    color: #333333;
+}
+
+/* Acciones */
+
+.acciones-anuncio-docente {
+    padding: 14px 20px;
+    background-color: #F5F5F5;
+    border-top: 1px solid #DDDDDD;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.acciones-anuncio-docente button {
+    border: none;
+    border-radius: 8px;
+    padding: 9px 14px;
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.acciones-anuncio-docente img {
+    width: 16px;
+    height: 16px;
+}
+
+.boton-editar-anuncio {
+    background-color: #FFFFFF;
+    color: #333333;
+    border: 1px solid #BBBBBB !important;
+}
+
+.boton-editar-anuncio:hover {
+    background-color: #EEEEEE;
+}
+
+.boton-eliminar-anuncio {
+    background-color: #8A0078;
+    color: #FFFFFF;
+}
+
+.boton-eliminar-anuncio img {
+    filter: brightness(0) invert(1);
+}
+
+.boton-eliminar-anuncio:hover {
+    background-color: #6f0060;
+}
+
+/* Estado vacío */
+
+.estado-vacio-docente {
+    text-align: center;
+    width: 100%;
+    margin-top: 40px;
+    color: #777777;
+}
+
+/* Modal */
+
+.modal-anuncio-docente {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: min(92vw, 560px);
+    max-height: 90vh;
+    overflow: auto;
+
+    margin: auto;
+}
+
+.modal-anuncio-docente::backdrop {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.formulario-anuncio-docente,
+.contenido-modal-eliminar {
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.formulario-anuncio-docente h2,
+.contenido-modal-eliminar h2 {
+    color: #333333;
+    font-size: 1.5rem;
+}
+
+.formulario-anuncio-docente label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #333333;
+    font-weight: 700;
+}
+
+.formulario-anuncio-docente input,
+.formulario-anuncio-docente textarea {
+    width: 100%;
+    border: 1px solid #BBBBBB;
+    border-radius: 8px;
+    padding: 11px 12px;
+    font: inherit;
+    resize: vertical;
+}
+
+.formulario-anuncio-docente input:focus,
+.formulario-anuncio-docente textarea:focus {
+    outline: 2px solid #8A0078;
+    border-color: #8A0078;
+}
+
+.acciones-modal-anuncio {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.acciones-modal-anuncio button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.boton-cancelar-modal {
+    background-color: #E6E6E6;
+    color: #333333;
+}
+
+.boton-cancelar-modal:hover {
+    background-color: #D8D8D8;
+}
+
+.boton-confirmar-modal,
+.boton-confirmar-eliminar {
+    background-color: #8A0078;
+    color: #FFFFFF;
+}
+
+.boton-confirmar-modal:hover,
+.boton-confirmar-eliminar:hover {
+    background-color: #6f0060;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .cabecera-anuncios-docente {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cabecera-anuncios-docente h1 {
+        font-size: 1.6rem;
+    }
+
+    .boton-anadir-anuncio {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .datos-anuncio-docente {
+        flex-direction: column;
+    }
+
+    .meta-anuncio-docente {
+        align-items: flex-start;
+        min-width: 0;
+    }
+
+    .acciones-anuncio-docente {
+        flex-direction: column;
+    }
+
+    .acciones-anuncio-docente button {
+        width: 100%;
+        justify-content: center;
+    }
+}

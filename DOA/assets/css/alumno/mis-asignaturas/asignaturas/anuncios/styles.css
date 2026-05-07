@@ -1,0 +1,119 @@
+/* Página de anuncios */
+
+.pagina-anuncios {
+    gap: 25px;
+}
+
+/* Cabecera de la sección */
+
+.cabecera-anuncios {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cabecera-anuncios h1 {
+    color: #333333;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.cabecera-anuncios p {
+    color: #555555;
+    font-size: 1.1rem;
+}
+
+/* Contenedor de anuncios */
+
+.contenedor-anuncios {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Tarjeta de anuncio */
+
+.tarjeta-anuncio {
+    width: 100%;
+    background-color: #F5F5F5;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Parte superior del anuncio */
+
+.datos-anuncio {
+    background-color: #8A0078;
+    color: #FFFFFF;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.datos-anuncio h2 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.datos-anuncio p {
+    font-size: 0.95rem;
+}
+
+.meta-anuncio {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+
+/* Contenido del anuncio */
+
+.contenido-anuncio {
+    padding: 18px 20px;
+    background-color: #FFFFFF;
+}
+
+.contenido-anuncio p {
+    line-height: 1.5;
+    color: #333333;
+}
+
+/* Estado vacío */
+
+.estado-vacio {
+    text-align: center;
+    width: 100%;
+    margin-top: 40px;
+    color: #777777;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .cabecera-anuncios h1 {
+        font-size: 1.6rem;
+    }
+
+    .datos-anuncio {
+        flex-direction: column;
+    }
+
+    .meta-anuncio {
+        align-items: flex-start;
+        min-width: 0;
+    }
+
+    .tarjeta-anuncio {
+        border-radius: 6px;
+    }
+}

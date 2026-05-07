@@ -1,0 +1,182 @@
+/* RESET BÁSICO */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* LANDING */
+
+.landing {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../../imagenes/FINAL_FONDO_TEXTLESS.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+
+/* LOGO */
+
+.logo-landing {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    z-index: 10;
+}
+
+.logo-landing img {
+    width: 240px;
+    height: auto;
+}
+
+.logo-landing-pc {
+    display: block;
+}
+
+.logo-landing-movil {
+    display: none;
+}
+
+
+/* BOTÓN CABECERA */
+
+.botones-cabecera {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    display: flex;
+    gap: 18px;
+    z-index: 10;
+}
+
+.btn-azul-cabecera {
+    background-color: #0455AD;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 50px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-azul-cabecera:hover {
+    background-color: #034894;
+}
+
+
+/* TARJETA LEMA */
+
+.tarjeta-lema {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.65);
+    border-radius: 18px;
+    padding: 45px 55px;
+    max-width: 670px;
+    width: 50%;
+}
+
+.lema {
+    color: #000000;
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 28px;
+}
+
+.btn-azul-contacto {
+    background-color: #0455AD;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 40px;
+    border-radius: 6px;
+    font-size: 1.15rem;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.btn-azul-contacto:hover {
+    background-color: #034894;
+}
+
+
+/* VERSIÓN MÓVIL */
+
+@media (max-width: 768px) {
+
+    .landing {
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 30px;
+    }
+
+    .logo-landing {
+        top: 18px;
+        left: 15px;
+    }
+
+    .logo-landing img {
+        width: 84px;
+        height: auto;
+    }
+
+    .logo-landing-pc {
+        display: none;
+    }
+
+    .logo-landing-movil {
+        display: block;
+    }
+
+    .botones-cabecera {
+        top: 18px;
+        right: 15px;
+        gap: 8px;
+    }
+
+    .btn-azul-cabecera {
+        padding: 7px 14px;
+        font-size: 0.78rem;
+        border-radius: 5px;
+    }
+
+    .tarjeta-lema {
+        position: absolute;
+        top: auto;
+        bottom: 30px;
+        left: 15px;
+        right: 15px;
+        transform: none;
+        width: auto;
+        max-width: none;
+        padding: 22px;
+    }
+
+    .lema {
+        font-size: 1.25rem;
+        margin-bottom: 18px;
+    }
+
+    .btn-azul-contacto {
+        padding: 9px 26px;
+        font-size: 0.95rem;
+    }
+}

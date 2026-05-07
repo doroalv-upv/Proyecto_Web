@@ -1,0 +1,68 @@
+/* Migas de pan */
+
+#breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+    font-weight: 400;
+    color: white;
+}
+
+#breadcrumbs div {
+    display: flex;
+    align-items: center;
+    color: white;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+#breadcrumbs a {
+    color: white;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+#breadcrumbs a:visited {
+    color: white;
+}
+
+#breadcrumbs a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+#breadcrumbs span {
+    color: white;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+/* Solo la última miga en negrita */
+#breadcrumbs div:last-child,
+#breadcrumbs div:last-child a,
+#breadcrumbs div:last-child span {
+    font-weight: 700;
+}
+
+#breadcrumbs div:not(:last-child)::after {
+    content: ">";
+    font-size: 14px;
+    padding-left: 8px;
+    color: white;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/* Version movil */
+
+@media (max-width: 600px) {
+
+    #breadcrumbs {
+        display: none;
+    }
+
+    .iconos-usuario {
+        gap: 20px;
+    }
+}

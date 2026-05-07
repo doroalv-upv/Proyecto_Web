@@ -1,0 +1,23 @@
+/* Layout general con menú lateral */
+
+.layout-principal {
+    display: flex;
+    min-height: calc(100vh - 66px);
+}
+
+/* Contenido principal */
+
+.contenido {
+    flex: 1;
+    min-height: calc(100vh - 66px);
+    background-color: #e9e9e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido centrado */
+
+.contenido-centrado {
+    text-align: center;
+}

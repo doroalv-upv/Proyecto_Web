@@ -1,0 +1,298 @@
+/* =================== AQUÍ EMPIEZA RESET BÁSICO =================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #830254;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+/* =================== AQUÍ ACABA RESET BÁSICO =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN HEADER =================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+    gap: 30px;
+}
+
+.logo-gti {
+    width: 150px;
+    height: auto;
+}
+
+/* Título PRODUCTOS centrado */
+.titulo-seccion {
+    font-size: 28px;
+    color: #830254;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+}
+
+/* Zona de botones de acceso (Registrarse + Iniciar Sesión) */
+.botones-acceso {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Botones granate redondeados */
+.btn-acceso {
+    background-color: #830254;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 9.5px;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    border: 3px solid #830254;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.btn-acceso:hover {
+    background-color: #6a0344;
+    border-color: #6a0344;
+}
+/* =================== AQUÍ ACABA SECCIÓN HEADER =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN LISTA DE PRODUCTOS =================== */
+.lista-productos {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 60px 60px 60px;
+}
+
+/* Cada producto: caja blanca con borde granate */
+.producto {
+    background-color: #ffffff;
+    border: 3px solid #830254;
+    border-radius: 30px;
+    padding: 30px 40px;
+    width: 100%;
+    max-width: 800px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.producto:hover {
+    background-color: #f7e8f0;
+}
+
+/* Logo del producto */
+.producto-logo {
+    height: 90px;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Descripción del producto */
+.producto-descripcion {
+    color: #830254;
+    font-size: 16px;
+    margin: 0;
+}
+/* =================== AQUÍ ACABA SECCIÓN LISTA DE PRODUCTOS =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN FOOTER =================== */
+.footer {
+    background-color: #830254;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 25px 40px;
+    margin-top: auto;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.footer-item img {
+    width: 45px;
+    height: 45px;
+}
+
+.footer-item p {
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0;
+}
+/* =================== AQUÍ ACABA SECCIÓN FOOTER =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN RESPONSIVE - TABLET =================== */
+@media (max-width: 1024px) {
+    .header {
+        padding: 25px 30px;
+        gap: 20px;
+    }
+
+    .titulo-seccion {
+        font-size: 24px;
+    }
+
+    .btn-acceso {
+        padding: 12px 25px;
+        font-size: 15px;
+    }
+
+    .lista-productos {
+        padding: 20px 30px 40px 30px;
+        gap: 25px;
+    }
+
+    .producto {
+        padding: 25px 30px;
+    }
+
+    .producto-logo {
+        height: 75px;
+    }
+
+    /* Footer un poco más pequeño en tablet */
+    .footer {
+        padding: 15px 30px;
+    }
+
+    .footer-item img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .footer-item p {
+        font-size: 12px;
+    }
+}
+/* =================== AQUÍ ACABA SECCIÓN RESPONSIVE - TABLET =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN RESPONSIVE - MÓVIL =================== */
+@media (max-width: 768px) {
+
+    /* Header en columna */
+    .header {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .logo-gti {
+        width: 110px;
+    }
+
+    .titulo-seccion {
+        font-size: 22px;
+    }
+
+    .botones-acceso {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-acceso {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Productos */
+    .lista-productos {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .producto {
+        padding: 25px 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .producto-logo {
+        height: 65px;
+    }
+
+    .producto-descripcion {
+        font-size: 14px;
+    }
+
+    /* Footer compacto */
+    .footer {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 10px;
+        padding: 12px 10px;
+    }
+
+    .footer-item {
+        gap: 4px;
+    }
+
+    .footer-item img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .footer-item p {
+        font-size: 10px;
+    }
+}
+/* =================== AQUÍ ACABA SECCIÓN RESPONSIVE - MÓVIL =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN RESPONSIVE - MÓVIL PEQUEÑO =================== */
+@media (max-width: 400px) {
+    .titulo-seccion {
+        font-size: 20px;
+    }
+
+    .btn-acceso {
+        padding: 9px 16px;
+        font-size: 13px;
+    }
+
+    .producto {
+        padding: 20px 15px;
+    }
+
+    .producto-logo {
+        height: 55px;
+    }
+
+    .producto-descripcion {
+        font-size: 13px;
+    }
+
+    .footer-item img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .footer-item p {
+        font-size: 9px;
+    }
+}
+/* =================== AQUÍ ACABA SECCIÓN RESPONSIVE - MÓVIL PEQUEÑO =================== */

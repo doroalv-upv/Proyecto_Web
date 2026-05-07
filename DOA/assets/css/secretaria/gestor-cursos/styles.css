@@ -1,0 +1,140 @@
+/* Gestor de cursos simple */
+
+.contenido-principal {
+    flex-grow: 1;
+    padding: 40px;
+}
+
+/* Cabecera */
+
+.cabecera-cursos {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+}
+
+.cabecera-cursos h1 {
+    margin: 0 0 8px 0;
+    color: #1F2933;
+    font-size: 30px;
+}
+
+.cabecera-cursos p {
+    margin: 0;
+    color: #555555;
+    font-size: 16px;
+}
+
+/* Cursos */
+
+.contenedor-cursos {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tarjeta-curso {
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 2px solid #0052A3;
+    border-radius: 10px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: #1F2933;
+    text-decoration: none;
+}
+
+.tarjeta-curso:hover {
+    background-color: #F0F7FF;
+}
+
+.tarjeta-curso img {
+    width: 42px;
+    height: 42px;
+}
+
+.tarjeta-curso h2 {
+    margin: 0 0 6px 0;
+    font-size: 22px;
+}
+
+.tarjeta-curso p {
+    margin: 0;
+    color: #555555;
+}
+
+/* Alumnos */
+
+.contenedor-alumnos {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cabecera-alumnos {
+    margin-bottom: 18px;
+}
+
+.cabecera-alumnos h2 {
+    margin: 0 0 6px 0;
+    color: #1F2933;
+    font-size: 24px;
+}
+
+.cabecera-alumnos p {
+    margin: 0;
+    color: #555555;
+}
+
+.contenedor-tabla-alumnos {
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 2px solid #0052A3;
+    border-radius: 10px;
+    padding: 22px;
+    overflow-x: auto;
+}
+
+.tabla-alumnos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-alumnos th,
+.tabla-alumnos td {
+    padding: 14px;
+    border-bottom: 1px solid #DDDDDD;
+    text-align: left;
+}
+
+.tabla-alumnos th {
+    background-color: #F5F5F5;
+    color: #1F2933;
+}
+
+.tabla-alumnos tr:last-child td {
+    border-bottom: none;
+}
+
+/* Móvil */
+
+@media (max-width: 768px) {
+    .contenido-principal {
+        padding: 22px;
+    }
+
+    .cabecera-cursos,
+    .cabecera-alumnos {
+        text-align: center;
+    }
+
+    .tarjeta-curso {
+        flex-direction: column;
+        text-align: center;
+    }
+}

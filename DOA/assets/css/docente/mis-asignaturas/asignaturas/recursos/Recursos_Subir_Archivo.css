@@ -1,0 +1,56 @@
+/* Acciones de recursos docente */
+
+.acciones-recursos-docente {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 25px auto;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.input-subir-archivo {
+    display: none;
+}
+
+.btn-subir-recurso,
+.btn-borrar-recursos {
+    min-width: 160px;
+    border: 2px solid #0052A3;
+    background-color: #F5F5F5;
+    color: #0052A3;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
+
+.btn-borrar-recursos.activo {
+    background-color: #C62828;
+    border-color: #C62828;
+    color: white;
+}
+
+.modo-borrado-activo .tarjeta-recurso {
+    border-color: #C62828;
+    cursor: pointer;
+}
+
+.modo-borrado-activo .tarjeta-recurso:hover {
+    background-color: #FFE8E8;
+}
+
+@media (max-width: 768px) {
+    .acciones-recursos-docente {
+        flex-direction: column;
+        max-width: 100%;
+        gap: 10px;
+    }
+
+    .btn-subir-recurso,
+    .btn-borrar-recursos {
+        width: 100%;
+    }
+}

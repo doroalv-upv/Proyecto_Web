@@ -1,0 +1,278 @@
+/* =================== AQUÍ EMPIEZA RESET BÁSICO =================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    /* Imagen de fondo del chip electrónico */
+    background-image: url('../../../imagenes/Fondo_Home_GTI.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+/* =================== AQUÍ ACABA RESET BÁSICO =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN HEADER (LOGO + MENÚ NAVEGACIÓN) =================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    background-color: transparent;
+}
+
+.logo-gti {
+    width: 200px;
+    height: auto;
+    margin: 30px 0 0 60px;
+    background-color: #ffffff;
+    padding: 15px 25px;
+    border-radius: 8px;
+}
+
+/* Menú navegación granate redondeado abajo */
+.menu-nav {
+    background-color: #830254;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    padding: 30px 50px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu-link:hover {
+    text-decoration: underline;
+}
+
+/* Icono del carrito (versión blanca para fondo granate) */
+.menu-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-carrito img {
+    width: 35px;
+    height: 35px;
+}
+
+.menu-carrito:hover {
+    opacity: 0.8;
+}
+/* =================== AQUÍ ACABA SECCIÓN HEADER =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN PRINCIPAL =================== */
+.contenido-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 80px;
+    gap: 60px;
+    min-height: calc(100vh - 110px);
+}
+
+/* Bloque de bienvenida (texto a la izquierda) con fondo blanco semi-transparente */
+.bienvenida {
+    max-width: 650px;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 30px 35px;
+    border-radius: 20px;
+}
+
+.bienvenida h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.bienvenida p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #000000;
+}
+
+/* Zona del botón productos (a la derecha) */
+.boton-zona {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botón PRODUCTOS: fondo blanco, borde granate, redondeado */
+.boton-productos {
+    background-color: #ffffff;
+    color: #000000;
+    border: 4px solid #830254;
+    border-radius: 40px;
+    padding: 50px 100px;
+    font-size: 24px;
+    text-decoration: none;
+    text-align: center;
+    font-family: inherit;
+    min-width: 350px;
+}
+
+.boton-productos:hover {
+    background-color: #f7e8f0;
+}
+/* =================== AQUÍ ACABA SECCIÓN PRINCIPAL =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN RESPONSIVE - TABLET =================== */
+@media (max-width: 1024px) {
+    .logo-gti {
+        margin: 20px 0 0 30px;
+        width: 170px;
+    }
+
+    .menu-nav {
+        padding: 25px 40px;
+        gap: 30px;
+    }
+
+    .menu-link {
+        font-size: 17px;
+    }
+
+    .menu-carrito img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .contenido-principal {
+        padding: 50px 30px;
+        gap: 40px;
+    }
+
+    .bienvenida h1 {
+        font-size: 28px;
+    }
+
+    .bienvenida p {
+        font-size: 16px;
+    }
+
+    .boton-productos {
+        padding: 40px 60px;
+        font-size: 20px;
+        min-width: 250px;
+    }
+}
+/* =================== AQUÍ ACABA SECCIÓN RESPONSIVE - TABLET =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN RESPONSIVE - MÓVIL =================== */
+@media (max-width: 768px) {
+
+    /* Header: logo y menú apilados */
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .logo-gti {
+        margin: 15px 0;
+        width: 140px;
+    }
+
+    .menu-nav {
+        width: 100%;
+        border-radius: 0;
+        padding: 15px;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .menu-link {
+        font-size: 14px;
+    }
+
+    .menu-carrito img {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Contenido principal apilado */
+    .contenido-principal {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 30px;
+        min-height: auto;
+    }
+
+    .bienvenida {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .bienvenida h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .bienvenida p {
+        font-size: 15px;
+    }
+
+    .boton-productos {
+        padding: 35px 40px;
+        font-size: 18px;
+        min-width: 0;
+        width: 100%;
+        max-width: 320px;
+    }
+}
+/* =================== AQUÍ ACABA SECCIÓN RESPONSIVE - MÓVIL =================== */
+
+
+/* =================== AQUÍ EMPIEZA SECCIÓN RESPONSIVE - MÓVIL PEQUEÑO =================== */
+@media (max-width: 400px) {
+    .menu-nav {
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .menu-link {
+        font-size: 12px;
+    }
+
+    .bienvenida h1 {
+        font-size: 20px;
+    }
+
+    .bienvenida p {
+        font-size: 14px;
+    }
+
+    .boton-productos {
+        padding: 30px 20px;
+        font-size: 16px;
+    }
+}
+/* =================== AQUÍ ACABA SECCIÓN RESPONSIVE - MÓVIL PEQUEÑO =================== */
